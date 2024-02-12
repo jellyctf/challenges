@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
         return 2;
     }
 
-    char *flag = ":P:<M?tZX<*Ia,kX?*MX_)kX:Xik*g<,..v";
+    char *flag = "c^eer<M?tZX<*Ia,kX?*MX_)kX:Xik*g<,..v";
     int i;
     int flaglen = strlen(flag);
     char output[flaglen];
