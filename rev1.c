@@ -2,8 +2,8 @@
 #include <string.h>
 
 int main(int argc, char **argv) {
-    if(argc < 1) {
-        printf("%s%s%s", "usage: ", argv[0], " flag");
+    if (argc < 2) {
+        printf("%s%s%s", "usage: ", argv[0], " flag\n");
         return 2;
     }
     if (argc > 9999) {
