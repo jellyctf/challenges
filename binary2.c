@@ -1,13 +1,12 @@
-// Missing input validation
+// Integer underflow
 #include <stdio.h>
 
 int main(int argc, char **argv) {
     int coin_balance = 100;
-    int non_jelly_remainder_stock = 100;
     int con = 0;
 
     while (con == 0){
-        printf("\nWelcome to the Phase Connect coffee shop v1.0\n");
+        printf("\nWelcome to the Phase Connect coffee shop v2.0\n");
         printf("We sell coffee! \n");
         printf("Please buy our coffee... \n");
         printf("or else... \n");
@@ -29,15 +28,16 @@ int main(int argc, char **argv) {
         else if (menu == 2)
         {
             printf("\n\nCurrently on sale\n");
-            printf("1. Kaneko Lumi Inspired - $35 each (%d in stock)\n", non_jelly_remainder_stock);
-            printf("2. Jelly Hoshiumi Inspired (Limited Edition) - $1,000,000 each (1 in stock)\n");
+            printf("1. Chisaka Airi Inspired - $35 each\n");
+            printf("2. Rie Himemiya Inspired - $35 each\n");
+            printf("3. Jelly Hoshiumi Inspired (Limited Edition) - $1,000,000 each\n");
             printf("Please make a selection: ");
 
             int choice;
             fflush(stdin);
             scanf("%d", &choice);
 
-            if (choice == 1)
+            if (choice == 1 | choice == 2)
             {
                 printf("\nEnter desired quantity: ");
 
@@ -46,30 +46,32 @@ int main(int argc, char **argv) {
                 scanf("%d", &quantity);
                 printf("\n");
 
-                if (quantity > non_jelly_remainder_stock)
-                {
-                    printf("Currently out of stock... please order a smaller quantity.");
-                }
-                else
+                if (quantity > 0)
                 {
                     int total_cost = 35 * quantity;
+                    int coin_balance_after_purchase = coin_balance - total_cost;
+
                     printf("Current balance: %d\n", coin_balance);
                     printf("Total cost: %d\n", total_cost);
+                    printf("Balance after purchase: %d\n", coin_balance_after_purchase);
 
-                    if (coin_balance < total_cost)
+                    if (coin_balance_after_purchase < 0)
                     {
                         printf("Insufficient funds to purchase! Please try again!\n\n");
                     }
                     else
                     {
-                        coin_balance = coin_balance - total_cost;
-                        non_jelly_remainder_stock = non_jelly_remainder_stock - quantity;
+                        coin_balance = coin_balance_after_purchase;
                         printf("%d coffees purchased! Your coffee is being packaged and will be delivered in 2028!\n\n", quantity);
                         printf("Current balance: %d\n", coin_balance);
                     }
                 }
+                else
+                {
+                    printf("Invalid coffee quantity\n");
+                }
             }
-            else if (choice == 2)
+            else if (choice == 3)
             {
                 printf("You have chosen the deluxe, premium, limited edition seiso idol princess Jelly Hoshiumi inspired coffee.\n");
                 printf("This coffee costs $1,000,000. Press 1 to confirm purchase: ");
@@ -82,7 +84,7 @@ int main(int argc, char **argv) {
                 {
                     if (coin_balance >= 1000000)
                     {
-                        char *FLAG = "jellyCTF{PH4SE_C0NN3CT_IS_A_COFF33_C0MP4NY_VALIDATION_3498}\n";
+                        char *FLAG = "jellyCTF{PH4S3_C0NN3CT_1S_4_C0FFEE_COMP4NY_UNDERFLOW_9518}\n";
                         printf("%s", FLAG);
                         break;
                     }
