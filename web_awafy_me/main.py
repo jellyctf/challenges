@@ -1,0 +1,34 @@
+# Yoinked from: https://realpython.com/python-web-applications/
+from flask import Flask
+from flask import request, escape
+import subprocess
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    user_input = escape(request.args.get("user_input", ""))
+
+    if user_input:
+        try:
+            result = subprocess.check_output("python3 ./awafier.py " + user_input, shell=True)
+            result = result.decode()
+        except:
+            result = "Error processing input"
+    else:
+        result = ""
+
+    return (
+        """<h1>AWA5.0 Name converter</h1>"""
+        + """<h3>A quick and easy way to convert your name into an AWASCII script that prints it out!</h3>"""
+        + """<form action="" method="get">
+                Enter your name here! <input type="text" name="user_input">
+                <input type="submit" value="Convert to AWA5.0">
+            </form>"""
+        + "Awawawafied result:"
+        + "<br/>"
+        + '<span style="white-space: pre-line">' + result + '</span>'
+    )
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8080, debug=True)
