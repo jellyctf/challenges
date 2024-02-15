@@ -1,3 +1,4 @@
+# TODO: Put this in common code if there are other AWA challenges
 AWASCII_MAP ={
     "A": 0,
     "W": 1,
@@ -64,6 +65,8 @@ AWASCII_MAP ={
     ";": 62,
     "\n": 63,
 }
+
+REVERSE_AWASCII_MAP = dict((v,k) for k,v in AWASCII_MAP.items())
 
 SUBSTITUTION_MAP = {
     "k": "c",
