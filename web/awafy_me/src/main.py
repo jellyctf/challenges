@@ -20,7 +20,7 @@ def index():
 
     return (
         """<h1>AWA5.0 Name converter</h1>"""
-        + """<h3>A quick and easy way to convert your name into an AWASCII script that prints it out!</h3>"""
+        + """<h3>Enter your name to generate an AWASCII script that prints out your name!</h3>"""
         + """<form action="" method="get">
                 Enter your name here! <input type="text" name="user_input">
                 <input type="submit" value="Convert to AWA5.0">

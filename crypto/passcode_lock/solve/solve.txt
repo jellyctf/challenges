@@ -1,0 +1,3 @@
+Input a de Brujin sequence to reduce the number of characters needed to brute force the lock
+Online generator: http://www.hakank.org/comb/debruijn.cgi
+Concept: https://samy.pl/opensesame/

@@ -1,0 +1,5 @@
+Command injection but enter inputs in AWASCII
+
+awawawawawawa awa awawawawa awawa awa awa awa awawa awa awawawawawawawawa awawa awa awawa awa awawawawa awawa awa awa awa awa awa awa awa awawa awawa awawa awa awa awa
+
+(;cat flag)

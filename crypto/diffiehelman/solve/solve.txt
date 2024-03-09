@@ -1,0 +1,4 @@
+Diffie Hellman Key Exchange
+Use g = p - 1
+This will force the constructed shared secret key to be 1 (or p-1), which can be identified from the public keys
+Use online AES decryption tool to decrypt (AES256, ECB mode) - e.g. https://the-x.cn/en-US/cryptography/Aes.aspx
