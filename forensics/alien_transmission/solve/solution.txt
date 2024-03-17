@@ -1,0 +1,2 @@
+View spectrogram of audio
+jellyCTF{youre_hearing_things}
