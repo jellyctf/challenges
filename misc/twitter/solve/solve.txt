@@ -1,0 +1,3 @@
+wayback machine to find page
+inspect source to find profile id
+find new account name with https://twitter.com/intent/user?user_id= 
