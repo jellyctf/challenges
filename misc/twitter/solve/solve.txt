@@ -1,3 +1,3 @@
-wayback machine to find page
-inspect source to find profile id
+wayback machine to find profile
+inspect source to find profile id (either under follow button in the format <id>-follow) or profile_banner in url
 find new account name with https://twitter.com/intent/user?user_id= 
