@@ -1,0 +1,35 @@
+initiaion?
+
+base64 encoding
+caesar
+vignere
+railfence
+playfair
+bacon cipher (a/w)
+solfa cipher
+book cipher: Epigraphs of programmng (tarpit 1982)
+21
+48
+119
+61
+57
+27
+16
+7
+
+Initiation exam: 7 stages (7 year old jelly)
+Stage 1: intro letter with acrostic key + clues: "Initiation", "front", go "ahead", "start" the test? --> simple password (princess)
+Stage 2: message encoded in base64 --> caesar cipher key --> (BIGNERD)
+Stage 4: vignere key --> (ALIEN) -->
+Stage 4: playfair --> (ACOUSTIC)
+Stage 5: Luminary? Arnold cipher --> Zip password --> (megalencephaly - 14 chars)
+- make it decodable by dCode
+Stage 6: jelly image/text awawa bacon cipher --> PDF password --> (sadgirl)
+
+
+Keep separate
+Stage 7: sheet music solfa cipher [in E minor] --> final flag unlock
+
+Keywords/keys?
+megalencephaly
+tarpit 1982 --> epigraphs

@@ -1,0 +1,6 @@
+Stage 1: intro letter with acrostic key + clues -->  PRINCESS
+Stage 2: message encoded in base64 --> caesar cipher key shift +3 --> (BIGNERD)
+Stage 3: vignere (ALIEN) + part 1 flag
+Stage 4: playfair --> (ACOUSTIC)
+Stage 5: Luminary - Arnold cipher --> Zip password --> (MEGALENCEPHALY - 14 chars)
+Stage 6: awawa bacon cipher --> final zip password --> (SADGIRL)
