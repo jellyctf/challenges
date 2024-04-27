@@ -4,11 +4,10 @@ from flask import Flask, request, send_file, redirect, flash, url_for
 from openpyxl import load_workbook
 
 app = Flask(__name__)
-# keep requests in memory 
+# keep requests in memory to avoid disk exhaustion
 # https://stackoverflow.com/a/28322143
 # https://github.com/pallets/werkzeug/blob/2bcb43c3574de33b36174c6dc964182ccbc14a69/src/werkzeug/formparser.py#L59
 app.config["MAX_CONTENT_LENGTH"] = 1024 * 500
-app.config["SECRET_KEY"] = "shoh5keiBeo8PooW4gahZiu3ohthaiSh3phah@f-u2ohH7keiy0chu1cu2AhkeiT"
 
 @app.route("/")
 def index():
@@ -36,14 +35,13 @@ def spreadsheet():
         resp_sheet = BytesIO()
         wb.save(resp_sheet)
         resp_sheet.seek(0)
-        flash("Your location has been recorded.")
         return send_file(
             resp_sheet,
-            download_name="mutually_beneficial_partners.xlsx",
+            download_name="your_location_has_been_recorded.xlsx",
             as_attachment=True,
             mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
