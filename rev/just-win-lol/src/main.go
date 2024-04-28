@@ -1,13 +1,16 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"math/rand"
+	"net/http"
 	"time"
+
+	"github.com/a-h/templ"
 )
 
-var cards = []string{"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"}
-var r = rand.New(rand.NewSource(time.Now().UTC().Unix()))
+var cards = []string{"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"}
+var suits = []string{"h", "c", "d", "s"}
 var handSize = 12
 
 func randHand(r rand.Rand) []string {
@@ -32,42 +35,54 @@ func isFiveOfAKind(slice []string) bool {
 }
 
 func main() {
-	fmt.Println(randHand(*r))
-	timeNow := time.Now().UTC().Unix() + 100000000
-	fmt.Println(timeNow)
+	http.Handle("/", templ.Handler(indexComponent()))
+	http.HandleFunc("/hand", func(w http.ResponseWriter, r *http.Request) {
+		var rand_time = rand.New(rand.NewSource(time.Now().UTC().Unix()))
+		hand := randHand(*rand_time)
+		log.Println(r.Header["X-Real-Ip"], hand)
+		handComponent(hand).Render(r.Context(), w)
+	})
+	fs := http.FileServer(http.Dir("assets/"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	count := 0
-	results := make([]int64, 100)
-	for count < 100 {
-		done := false
-		origTime := timeNow
-		for !done {
-			var r = rand.New(rand.NewSource(timeNow))
-			hand := randHand(*r)
-			if isFiveOfAKind(hand) {
-				done = true
-			}
-			timeNow++
-		}
-		results[count] = timeNow - origTime
-		count++
-	}
-	fmt.Println(findStats(results))
+	log.Fatal(http.ListenAndServe(":8080", nil))
+
+	// timeNow := time.Now().UTC().Unix()
+	// fmt.Println(timeNow)
+
+	// count := 0
+	// results := make([]int64, 100)
+	// for count < 100 {
+	// 	done := false
+	// 	origTime := timeNow
+	// 	for !done {
+	// 		var r = rand.New(rand.NewSource(timeNow))
+	// 		hand := randHand(*r)
+	// 		if isFiveOfAKind(hand) {
+	// 			done = true
+	// 		}
+	// 		timeNow++
+	// 	}
+	// 	results[count] = timeNow - origTime
+	// 	count++
+	// }
+	// fmt.Println(findStats(results))
 }
-func findStats(slice []int64) (float64, int64, int64) {
-	var sum int64
-	sum = 0
-	min := slice[0]
-	max := slice[0]
-	for _, element := range slice {
-		sum += element
-		if element < min {
-			min = element
-		}
-		if element > max {
-			max = element
-		}
-	}
-	mean := float64(sum) / float64(len(slice))
-	return mean, min, max
-}
+
+// func findStats(slice []int64) (float64, int64, int64) {
+// 	var sum int64
+// 	sum = 0
+// 	min := slice[0]
+// 	max := slice[0]
+// 	for _, element := range slice {
+// 		sum += element
+// 		if element < min {
+// 			min = element
+// 		}
+// 		if element > max {
+// 			max = element
+// 		}
+// 	}
+// 	mean := float64(sum) / float64(len(slice))
+// 	return mean, min, max
+// }
