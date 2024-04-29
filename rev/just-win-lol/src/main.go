@@ -45,6 +45,7 @@ func main() {
 	fs := http.FileServer(http.Dir("assets/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
+	log.Println("startup")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
 	// timeNow := time.Now().UTC().Unix()
