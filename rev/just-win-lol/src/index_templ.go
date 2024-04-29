@@ -39,7 +39,7 @@ func indexComponent() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html><head><script src=\"https://unpkg.com/htmx.org@1.9.12\" integrity=\"sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2\" crossorigin=\"anonymous\"></script><link href=\"/static/style.css\" rel=\"stylesheet\"><script src=\"/static/anim.js\"></script></head><body class=\"scanlines\"><div class=\"wrapper\"><div class=\"hand\"></div><button hx-get=\"/hand\" hx-trigger=\"click\" hx-target=\".hand\" hx-swap=\"innerHTML\">get hand</button></div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html><head><script src=\"https://unpkg.com/htmx.org@1.9.12\" integrity=\"sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2\" crossorigin=\"anonymous\"></script><link href=\"/static/style.css\" rel=\"stylesheet\"><script src=\"/static/anim.js\"></script></head><body class=\"scanlines\"><div class=\"wrapper\"><div class=\"hand\"></div><button class=\"pixel-corners\" hx-get=\"/hand\" hx-trigger=\"click\" hx-target=\".hand\" hx-swap=\"innerHTML\">get hand</button></div></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
