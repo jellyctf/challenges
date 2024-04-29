@@ -73,6 +73,8 @@ templ indexComponent() {
 						scale(var(--scale));
 					transform-style: preserve-3d;
 					transition: all 0.1s ease-out;
+					transition: scale 0.4s linear;
+					transition: rotateZ 0.4s linear;
 					margin: -20px;
 					image-rendering: pixelated;
 					image-rendering: -moz-crisp-edges;
@@ -82,63 +84,77 @@ templ indexComponent() {
 					box-shadow: 0 0 30px red;
 				}
 				.card:hover {
-					animation: wiggle 0.2s linear 1;
+					animation: wiggle 0.4s linear 1;
 					cursor: pointer;
+					z-index: 1;
 				}
 
+				/* from https://easings.net/#easeInElastic which roughly
+				approximates Balatro's Moveable:move_juice() eyeballing it on wolframalpha's plot
+				when reversed and the last keyframe is set to 1
+				move_juice() is
+				0.02 * sin(50.8*t) * max(0, 0.4 - t/ 0.4)^3 for scale and
+				0.0012 * sin(40.8*t) * max(0, 0.4 - t/ 0.4)^2 for rotation
+				*/
 				@keyframes wiggle {
-					0%, 7% {
+					0% {
 						transform:
 							perspective(5000px)
 							rotateX(var(--rotateX))
 							rotateY(var(--rotateY))
 							rotateZ(var(--rotateZ))
-							scale(calc(var(--scale) * 0.9));
+							scale(calc(var(--scale) * 1));
 
 					}
-					15% {
+					4% {
 						transform:
-							rotateZ(-6deg)
 							perspective(5000px)
 							rotateX(var(--rotateX))
 							rotateY(var(--rotateY))
 							rotateZ(calc(var(--rotateZ) - 6deg))
-							scale(calc(var(--scale) * 1.1));
+							scale(calc(var(--scale) * 1.37));
 					}
-					20% {
+					8% {
 						transform:
 							perspective(5000px)
 							rotateX(var(--rotateX))
 							rotateY(var(--rotateY))
 							rotateZ(calc(var(--rotateZ) + 4deg))
-							scale(calc(var(--scale) * 0.93));
+							scale(calc(var(--scale) * 0.87));
 					}
-					25% {
+					14% {
 						transform:
-							rotateZ(-3deg)
 							perspective(5000px)
 							rotateX(var(--rotateX))
 							rotateY(var(--rotateY))
 							rotateZ(calc(var(--rotateZ) - 3deg))
-							scale(calc(var(--scale) * 1.07));
+							scale(calc(var(--scale) * 1.04));
 					}
-					30% {
+					18% {
 						transform:
 							perspective(5000px)
 							rotateX(var(--rotateX))
 							rotateY(var(--rotateY))
 							rotateZ(calc(var(--rotateZ) + 2deg))
-							scale(calc(var(--scale) * 0.95));
+							scale(calc(var(--scale) * 1.05));
 					}
-					35% {
+					26%, 28% {
 						transform:
 							perspective(5000px)
 							rotateX(var(--rotateX))
 							rotateY(var(--rotateY))
 							rotateZ(calc(var(--rotateZ) - 1deg))
-							scale(calc(var(--scale) * 1.05));
+							scale(calc(var(--scale) * 0.98));
 					}
-					40%, 100% {
+					40%, 42% {
+						transform:
+							perspective(5000px)
+							rotateX(var(--rotateX))
+							rotateY(var(--rotateY))
+							rotateZ(calc(var(--rotateZ) - 1deg))
+							scale(calc(var(--scale) * 1.01));
+					}
+					56%, 58%, 72%, 86%, 100% {
 						transform:
 							perspective(5000px)
 							rotateX(var(--rotateX))
