@@ -9,7 +9,7 @@ FROM alpine:latest AS run
 WORKDIR /app
 RUN adduser -S jelly
 USER jelly
-COPY --from=build --chown=jelly /just-win-lol /app/
 COPY --chown=jelly assets /app/assets
+COPY --from=build --chown=jelly /just-win-lol /app/
 EXPOSE 8080
 ENTRYPOINT ["/app/just-win-lol"]
