@@ -1,4 +1,4 @@
-# secret-engineering-role-play
+# secret_engineering_role_play
 
 I heard there's some ERP happening in the JellyCTF discord away from prying eyes...
 see if you can find any info on the places they're hanging out
