@@ -1,5 +1,5 @@
-// gets() buffer overflow
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv) {
     int BUF_SIZE = 64;
@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
 
                             printf("Your order is being processed. Please enter your shipping address: ");
                             scanf("\n");
-                            gets(address);
+                            fgets(address, 1000, stdin);
 
                             printf("%d coffees purchased! Your coffee is being packaged and will be delivered in 2028!\n", quantity);
                             printf("Coffee will be delivered to %s\n", address);
@@ -101,8 +101,15 @@ int main(int argc, char **argv) {
                 {
                     if (coin_balance >= 1000000)
                     {
-                        char *FLAG = "jellyCTF{PhASe_CoNNECt_iS_A_CoFFee_COmPaNY_BUFFER_1102}\n";
-                        printf("%s", FLAG);
+                        FILE *f = fopen("flag.txt", "r");
+                        if(f == NULL){
+
+                            printf("Flag not found: please run this on the server\n");
+                            exit(0);
+                        }
+                        char buf[64];
+                        fgets(buf, 63, f);
+                        printf("YOUR FLAG IS: %s\n", buf);
                         break;
                     }
                     else
