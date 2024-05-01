@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- from https://github.com/iqbaltaufiq/chat-template -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vlookup_hot_singles</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/chat.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- LEFT SECTION -->
+
+    <section id="main-left" class="main-left">
+      <!-- header -->
+      <div id="header-left" class="header-left">
+        <span class="glyphicon glyphicon-menu-hamburger hamburger-btn"></span>
+        <span class="glyphicon glyphicon-search search-btn"></span>
+        <span class="glyphicon glyphicon-option-vertical option-btn"></span>
+      </div>
+
+      <!-- chat list -->
+      <div id="chat-list" class="chat-list">
+        <!-- user lists -->
+        <div id="friends" class="friends">
+          <!-- photo -->
+          <div class="profile friends-photo">
+            <img src="static/starknight2.jpg" alt="">
+          </div>
+          
+          <div class="friends-credent">
+            <!-- name -->
+            <span class="friends-name">Starknight 2</span>
+            <!-- last message -->
+            <span class="friends-message">woooow, soo smooth! 😍</span>
+          </div>
+          <!-- notification badge -->
+          <!-- <span class="badge notif-badge">0</span> -->
+        </div>
+
+        <div id="friends" class="friends">
+          <!-- photo -->
+          <div class="profile friends-photo">
+            <img src="static/jelly.jpg" alt="">
+          </div>
+          
+          <div class="friends-credent">
+            <!-- name -->
+            <span class="friends-name">Jelly Hoshiumi</span>
+            <!-- last message -->
+            <span class="friends-message">please respond</span>
+          </div>
+          <!-- notification badge -->
+          <span class="badge notif-badge">99+</span>
+        </div>
+
+        <div id="friends" class="friends">
+          <!-- photo -->
+          <div class="profile friends-photo">
+            <img src="static/airo.jpg" alt="">
+          </div>
+          
+          <div class="friends-credent">
+            <!-- name -->
+            <span class="friends-name">AiRo</span>
+            <!-- last message -->
+            <span class="friends-message">male💋in💋my💋DMs</span>
+          </div>
+          <!-- notification badge -->
+          <span class="badge notif-badge">5</span>
+        </div>
+
+        <div id="friends" class="friends">
+          <!-- photo -->
+          <div class="profile friends-photo">
+            <img src="static/peppy.jpg" alt="">
+          </div>
+          
+          <div class="friends-credent">
+            <!-- name -->
+            <span class="friends-name">peppy</span>
+            <!-- last message -->
+            <span class="friends-message">kill yourself</span>
+          </div>
+          <!-- notification badge -->
+          <span class="badge notif-badge">1</span>
+        </div>
+
+        <div id="friends" class="friends">
+          <!-- photo -->
+          <div class="profile friends-photo">
+            <img src="static/sheepiroo.jpg" alt="">
+          </div>
+          
+          <div class="friends-credent">
+            <!-- name -->
+            <span class="friends-name">Sheepiroo</span>
+            <!-- last message -->
+            <span class="friends-message">rise and WHAT</span>
+          </div>
+          <!-- notification badge -->
+          <span class="badge notif-badge">3</span>
+        </div>
+      </div>
+
+      <!-- self-profile -->
+      <div id="self-info" class="self-info">
+        <!-- photo -->
+        <div class="profile your-photo">
+          <img src="static/starknight.jpg" alt="">
+        </div>
+        <!-- name -->
+        <h4 class="name your-name">Starknight</h4>
+        <span><a href="/admin" style="color: teal"><u>Admin Panel</u></a></span>
+        <!-- setting btn -->
+        <span class="glyphicon glyphicon-cog"></span>
+      </div>
+    </section>
+
+
+
+    <!-- RIGHT SECTION -->
+
+    <section id="main-right" class="main-right">
+      <!-- header -->
+      <div id="header-right" class="header-right">
+        <!-- profile pict -->
+        <div id="header-img" class="profile header-img">
+          <img src="static/starknight2.jpg" alt="">
+        </div>
+
+        <!-- name -->
+        <h4 class="name friend-name">Starknight 2</h4>
+
+        <!-- some btn -->
+        <div class="some-btn">
+          <span class="glyphicon glyphicon-facetime-video"></span>
+          <span class="glyphicon glyphicon-earphone"></span>
+          <span class="glyphicon glyphicon-option-vertical option-btn"></span>
+        </div>
+      </div>
+
+      <!-- chat area -->
+      <div id="chat-area" class="chat-area">
+        <!-- chat content -->
+
+        <!-- FRIENDS CHAT TEMPLATE -->
+        <div id="friends-chat" class="friends-chat">
+          <div class="profile friends-chat-photo">
+            <img src="static/starknight2.jpg" alt="">
+          </div>
+          <div class="friends-chat-content">
+            <p class="friends-chat-name">Starknight 2</p>
+            <p class="friends-chat-balloon">heeeeyyy</p>
+            <h5 class="chat-datetime">Sun, Aug 30 | 15:41</h5>
+          </div>
+        </div>
+
+        
+        <!-- YOUR CHAT TEMPLATE -->
+        <div id="your-chat" class="your-chat">
+          <p class="your-chat-balloon">'sup</p>
+          <p class="chat-datetime"><span class="glyphicon glyphicon-ok"></span> Sun, Aug 30 | 15:41</p>
+        </div>
+
+        <!-- YOUR CHAT TEMPLATE -->
+        <div id="your-chat" class="your-chat">
+          <p class="your-chat-balloon">damn girl are you O(1)? because i wanna be spending constant time with you</p>
+          <p class="chat-datetime"><span class="glyphicon glyphicon-ok"></span> Sun, Aug 30 | 15:42</p>
+        </div>
+        <!-- FRIENDS CHAT TEMPLATE -->
+        <div id="friends-chat" class="friends-chat">
+          <div class="profile friends-chat-photo">
+            <img src="static/starknight2.jpg" alt="">
+          </div>
+          <div class="friends-chat-content">
+            <p class="friends-chat-name">Starknight 2</p>
+            <p class="friends-chat-balloon">a bigO pickup line? first time I've heard one of those...</p>
+            <h5 class="chat-datetime">Sun, Aug 30 | 15:42</h5>
+          </div>
+        </div>
+
+        <!-- YOUR CHAT TEMPLATE -->
+        <div id="your-chat" class="your-chat">
+          <p class="your-chat-balloon">you must be A*, because you just found the shortest way to my heart</p>
+          <p class="chat-datetime"><span class="glyphicon glyphicon-ok"></span> Sun, Aug 30 | 15:42</p>
+        </div>
+
+        <!-- FRIENDS CHAT TEMPLATE -->
+        <div id="friends-chat" class="friends-chat">
+          <div class="profile friends-chat-photo">
+            <img src="static/starknight2.jpg" alt="">
+          </div>
+          <div class="friends-chat-content">
+            <p class="friends-chat-name">Starknight 2</p>
+            <p class="friends-chat-balloon">woooow, soo smooth! 😍</p>
+            <h5 class="chat-datetime">Sun, Aug 30 | 15:43</h5>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- typing area -->
+      <div id="typing-area" class="typing-area">
+        <!-- input form -->
+        <input id="type-area" class="type-area" placeholder="Type something...">
+        <!-- attachment btn -->
+        <div class="attach-btn">
+          <span class="glyphicon glyphicon-paperclip file-btn"></span>
+          <span class="glyphicon glyphicon-camera"></span>
+          <span class="glyphicon glyphicon-picture"></span>
+        </div>
+        <!-- send btn -->
+        <span class="glyphicon glyphicon-send send-btn"></span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

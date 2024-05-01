@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 from io import BytesIO
-from flask import Flask, request, send_file, redirect, flash, url_for
+from flask import Flask, request, send_file, redirect, url_for, make_response, send_from_directory
 from openpyxl import load_workbook
+import jwt
 
 app = Flask(__name__)
 # keep requests in memory to avoid disk exhaustion
@@ -9,9 +10,28 @@ app = Flask(__name__)
 # https://github.com/pallets/werkzeug/blob/2bcb43c3574de33b36174c6dc964182ccbc14a69/src/werkzeug/formparser.py#L59
 app.config["MAX_CONTENT_LENGTH"] = 1024 * 500
 
+def is_admin(token):
+    data = jwt.decode(token, "secret", algorithms=["HS256"])
+    return data["user"] == "jelly"
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
+
 @app.route("/")
 def index():
+    resp = make_response(send_file("chat.html"))
+    resp.set_cookie('token', jwt.encode({"user":"starknight"}, "secret", algorithm="HS256"))
+    return resp
+
+@app.route("/admin")
+def admin():
+    if not is_admin(request.cookies.get('token')):
+        return "Unauthorized"
+
     return """
+        <div>part 1 flag: jellyCTF{redacted}</div>
+        <div>part 2:</div>
         <div>please upload a spreadsheet to populate with mutually beneficial partner candidates:</div>
         <form action="/spreadsheet" method="post" enctype="multipart/form-data">
             <input type="file" name="file">
@@ -21,13 +41,16 @@ def index():
 
 @app.route("/spreadsheet", methods=["POST"])
 def spreadsheet():
+    if not is_admin(request.cookies.get('token')):
+        return "Unauthorized"
+    
     if "file" not in request.files:
-        flash("No file")
-        return redirect(url_for("index"))
+        return redirect(url_for("admin"))
+    
     file = request.files["file"]
     if file.filename == "":
-        flash("No file")
-        return redirect(url_for("index"))
+        return redirect(url_for("admin"))
+
     if file:
         wb = load_workbook(filename=file)
         ws = wb.active

