@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"math/rand"
 	"net/http"
@@ -9,23 +10,36 @@ import (
 	"github.com/a-h/templ"
 )
 
-var cards = []string{"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"}
-var suits = []string{"h", "c", "d", "s"}
+type card struct {
+	value string
+	suit  string
+}
+
+func (c *card) String() string {
+	return fmt.Sprintf("%s%s", c.value, c.suit)
+}
+
+var cardValues = []string{"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"}
+var cardSuits = []string{"h", "c", "d", "s"}
 var handSize = 12
 
-func randHand(r rand.Rand) []string {
-	hand := make([]string, handSize)
+func randHand(r rand.Rand) []card {
+	hand := make([]card, handSize)
 	sum := 0
 	for sum < handSize {
-		hand[sum] = cards[r.Intn(len(cards))]
+		hand[sum] = card{
+			value: cardValues[r.Intn(len(cardValues))],
+			suit:  cardSuits[r.Intn(len(cardSuits))],
+		}
 		sum++
 	}
 	return hand
 }
 
-func isFiveOfAKind(slice []string) bool {
+func isFiveOfAKind(hand []card) bool {
 	counts := make(map[string]int)
-	for _, element := range slice {
+	for _, card := range hand {
+		element := card.value
 		counts[element] = counts[element] + 1
 		if counts[element] >= 5 {
 			return true
