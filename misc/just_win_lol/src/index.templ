@@ -102,6 +102,9 @@ templ indexComponent() {
 
 templ handComponent(hand []card) {
 	for idx, card := range hand {
-		<div class={ "card", "pixel-corners", cardPos(idx, card.value, card.suit) }>{ card.value }{ card.suit }</div>
+		<div class={ "card", "pixel-corners", cardPos(idx, card.value, card.suit) }>
+			// for easier identification
+			{card.value}{card.suit}
+		</div>
 	}
 }
