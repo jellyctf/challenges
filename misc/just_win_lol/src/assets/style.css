@@ -4,16 +4,10 @@
 }
 * {
     font-family: m6x11plus, monospace;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
 }
 button {
-    font-size: 30px;
     color: white;
-    width: 15rem;
-    height: 5rem;
-    background-color: dodgerblue;
-}
-button::after {
-    background: grey !important;
 }
 button:hover {
     cursor: pointer;
@@ -25,12 +19,7 @@ body {
     margin: 0;
     padding: 0;
 }
-.wrapper {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    place-items: center;
-}
+
 .card {
     --rotateX: 0deg;
     --rotateY: 0deg;
@@ -54,19 +43,511 @@ body {
     transition: all 0.1s ease-out;
     transition: scale 0.4s linear;
     transition: rotateZ 0.4s linear;
-    margin: -20px;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     /* trigger antialiasing for 3d transforms - https://stackoverflow.com/a/27065674 */
     outline: 1px solid transparent;
-    box-shadow: 0 0 30px red;
+    /* box-shadow: 0 0 30px black; */
 }
+
+.hand > .card {
+  margin-left: -35px;
+  margin-right: -35px;
+}
+
 .card:hover {
     animation: wiggle 0.4s linear 1;
     cursor: pointer;
     z-index: 1;
 }
+
+
+/* from https://grid.layoutit.com/?id=PrWFCTX */
+.container {  display: grid;
+  grid-template-columns: 400px 1.7fr 0.5fr; 
+  grid-template-rows: 0.9fr 0.5fr 1.0fr 0.7fr;
+  gap: 0px 20px;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-content: center;
+  justify-items: stretch;
+  align-items: stretch;
+  grid-template-areas:
+    "sidebar-container jokers-area consumables-area"
+    "sidebar-container play-area play-area"
+    "sidebar-container hand hand"
+    "sidebar-container buttons deck";
+  width: 95vw;
+  height: 100vh;
+  color: white;
+  font-size: 40px;
+}
+
+.sidebar-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3fr 0.3fr 1fr 0.3fr 1.5fr 1.0fr 1.0fr 3fr;
+  gap: 6px 6px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "padding-top padding-top padding-top"
+    "blind-name blind-name blind-name"
+    "blind-desc blind-desc blind-desc"
+    "round-score round-score round-score"
+    "score-info score-info score-info"
+    "run-info-button game-info game-info"
+    "options-button game-info game-info"
+    "padding-bottom padding-bottom padding-bottom";
+  align-self: center;
+  grid-area: sidebar-container;
+  height: 100vh;
+  background-color: rgb(54, 51, 58);
+  justify-content: center;
+  margin-left: 50px;
+  margin-right: 10px;
+}
+
+.padding-top { grid-area: padding-top; }
+
+.blind-name {
+  grid-area: blind-name;
+  justify-content: center;
+  display: grid;
+  margin: 5px;
+  background-color: rgba(150, 88, 119, .9);
+}
+
+.blind-desc {  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  grid-template-rows: 0.6fr 1.4fr;
+  gap: 0px 0px;
+  margin: 5px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "blind-desc-text blind-desc-text"
+    "blind-icon blind-score-info";
+  grid-area: blind-desc;
+  justify-content: center;
+  display: grid;
+  background-color: rgba(78, 61, 75, .9);
+}
+
+.blind-desc-text { 
+  grid-area: blind-desc-text;
+  justify-content: center;
+  display: grid;
+  font-size: 20px;
+}
+
+.blind-icon {
+  grid-area: blind-icon;
+  align-self: center;
+  display: grid;
+}
+
+.blind-score-info {
+  grid-area: blind-score-info;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  display: grid;
+  background-color: rgba(27, 41, 42, .9);
+}
+
+.score-info {  display: grid;
+  grid-template-columns: 1.3fr 0.4fr 1.3fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "hand-info hand-info hand-info"
+    "hand-chips hand-x hand-mult";
+  grid-area: score-info;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  background-color: #172323;
+}
+
+.hand-info { grid-area: hand-info; justify-content: center; display: grid;}
+
+.hand-chips {
+  grid-area: hand-chips;
+  justify-content: right;
+  display: grid;
+  background-color: #0093fe;
+}
+
+.hand-x {
+  grid-area: hand-x;
+  justify-content: center;
+  display: grid;
+  color: #ff4c40;
+}
+
+.hand-mult {
+  grid-area: hand-mult;
+  justify-content: left;
+  display: grid;
+  background-color: #ff4c40;
+}
+
+.run-info-button {
+  grid-area: run-info-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ee4a39;
+  height: 150px;
+  margin-left: 10px;
+}
+
+.options-button {
+  grid-area: options-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ee9700;
+  height: 150px;
+  margin-left: 10px;
+}
+
+.game-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "hands discards"
+    "money money"
+    "ante round";
+  grid-area: game-info;
+}
+
+.hands {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "hands-text"
+    "hands-number";
+  grid-area: hands;
+  justify-items: center;
+  background-color: #a8607f;
+}
+
+.hands-number {
+  grid-area: hands-number;
+  width: 90%;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #39333c;
+  color: #0197f1;
+}
+
+.hands-text {
+  grid-area: hands-text;
+  font-size: 26px;
+}
+
+.discards {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "discards-text"
+    "discards-number";
+  grid-area: discards;
+  justify-items: center;
+  background-color: #a8607f;
+}
+
+.discards-text {
+  grid-area: discards-text;
+  font-size: 26px;
+}
+
+.discards-number {
+  grid-area: discards-number;
+  font-size: 60px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #39333c;
+  color: #f35644;
+}
+
+.money {
+  grid-area: money;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a8607f;
+}
+.inner-money {
+  font-size: 60px;
+  color: #e0b35c;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 85%;
+  justify-content: center;
+  background-color: #39333c;
+}
+
+.ante {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "ante-text"
+    "ante-number";
+  grid-area: ante;
+  background-color: #a8607f;
+  justify-items: center;
+  align-items: center;
+}
+
+.ante-text {
+  grid-area: ante-text;
+  text-align: center;
+  font-size: 26px;
+}
+
+.ante-number {
+  grid-area: ante-number;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #39333c;
+  width: 80%;
+  height: 70%;
+}
+
+.round {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "round-text"
+    "round-number";
+  grid-area: round;
+  background-color: #a8607f;
+  justify-items: center;
+  align-items: center;
+}
+
+.round-text {
+  grid-area: round-text;
+  text-align: center;
+  font-size: 26px;
+}
+
+.round-number {
+  grid-area: round-number;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 56px;
+  color: #fb8e02;
+  background-color: #39333c;
+  width: 80%;
+  height: 70%;
+}
+
+.round-score {
+  display: grid; 
+  grid-template-columns: 0.6fr 1.4fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  margin: 5px;
+  grid-template-areas: 
+    "round-score-text round-score-number"; 
+  grid-area: round-score; 
+  background-color: #a8607f;
+}
+
+.round-score-text {
+  grid-area: round-score-text;
+  font-size: 25px;
+  text-align: center;
+}
+
+.round-score-number {
+  grid-area: round-score-number;
+  background-color: #39333c;
+  font-size: 46px;
+  text-align: center;
+}
+
+.padding-bottom { grid-area: padding-bottom; }
+
+.jokers-area { 
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.7fr 0.3fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "jokers"
+    "jokers-amount";
+  grid-area: jokers-area;
+}
+
+.jokers-amount {
+  grid-area: jokers-amount;
+  font-size: 26px;
+}
+
+.jokers {
+  grid-area: jokers;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(20,20,20, .2);
+}
+
+.jokers::after {
+  background: transparent !important;
+}
+
+.consumables-area {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.7fr 0.3fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "consumables"
+    "consumables-amount";
+  grid-area: consumables-area;
+  justify-items: end;
+  align-items: end;
+}
+
+.consumables-amount {
+  grid-area: consumables-amount;
+  align-self: start;
+  font-size: 26px;
+}
+
+.consumables {
+  grid-area: consumables;
+  padding-top: 75px;
+  height:100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(20,20,20, .2);
+}
+
+.consumables::after {
+  background: transparent !important;
+}
+
+.hand {
+  grid-area: hand;
+  margin-left: 10%;
+}
+
+.play-area { grid-area: play-area; }
+
+.buttons {
+  display: grid;
+  grid-template-columns: 0.3fr 0.2fr 0.3fr;
+  grid-template-rows: 0.2fr 0.6fr;
+  align-content: center;
+  justify-content: center;
+  gap: 6px 6px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". hand-drawn-amount ."
+    "play-hand-button sort-hand-area discard-hand-button";
+  grid-area: buttons;
+}
+
+.play-hand-button {
+  grid-area: play-hand-button; 
+  font-size: 60px;
+  /* width: 15rem;
+  height: 5rem; */
+  background-color: #0a8eee;
+}
+
+.sort-hand-area {  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-items: center;
+  align-items: center;
+  grid-template-areas:
+    "sort-hand-text sort-hand-text"
+    "sort-hand-rank-button sort-hand-suit-button";
+  grid-area: sort-hand-area;
+  border: 10px solid white !important;
+}
+
+.sort-hand-text {
+  grid-area: sort-hand-text;
+  text-align: center;
+  font-size: 36px;
+}
+
+.sort-hand-rank-button {
+  grid-area: sort-hand-rank-button;
+  text-align: center;
+  background-color: #ee9700;
+  padding: 10px;
+  font-size: 26px;
+}
+.sort-hand-suit-button {
+  grid-area: sort-hand-suit-button;
+  text-align: center;
+  background-color: #ee9700;
+  padding: 10px;
+  font-size: 26px;
+}
+
+
+.discard-hand-button {
+  grid-area: discard-hand-button;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ff4c40;
+}
+
+.hand-drawn-amount {
+  grid-area: hand-drawn-amount;
+  text-align: center;
+  font-size: 26px;
+  align-self: end;
+}
+
+.deck {
+  grid-area: deck;
+  margin-left: 50%;
+}
+
+
 
 /* from https://easings.net/#easeInElastic which roughly
 approximates Balatro's Moveable:move_juice() eyeballing it on wolframalpha's plot
@@ -285,7 +766,8 @@ move_juice() is
     bottom: 0;
     left: 0;
     right: 0;
-    background: #cacfd0;
+    /* background: #cacfd0; */
+    background-color: rgba(28, 37, 41, .5);
     display: block;
     pointer-events: none;
 }

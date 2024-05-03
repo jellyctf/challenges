@@ -1,8 +1,21 @@
 document.addEventListener('htmx:afterRequest', function(evt) {
-    let cards = document.querySelectorAll(".card");
+    let handCards = document.querySelectorAll(".hand .card");
+    let handCardAmount = document.querySelector(".hand-drawn-amount");
+    handCardAmount.innerText = `${handCards.length}/${handCards.length}`;
+    animCards(evt, handCards);
+});
+
+document.addEventListener('DOMContentLoaded', function(evt) {
+    let jokerCards = document.querySelectorAll(".jokers .card");
+    let jokerCardAmount = document.querySelector(".jokers-amount");
+    jokerCardAmount.innerText = `${jokerCards.length}/5`;
+    animCards(evt, jokerCards);
+});
+
+function animCards(evt, cards) {
     cards.forEach((card, idx) => {
         // subtle fan
-        card.style.setProperty("--rotateZ", idx-(cards.length/2) + "deg");
+        card.style.setProperty("--rotateZ", idx-((cards.length-1)/2) + "deg");
 
         card.addEventListener("mousemove", (event) => {
             const clampDeg = 15;
@@ -21,4 +34,4 @@ document.addEventListener('htmx:afterRequest', function(evt) {
             card.style.setProperty("--scale", "1");
         });
     });
-});
+}
