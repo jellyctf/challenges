@@ -71,14 +71,16 @@ func main() {
 		indexComponent(handsRemaining, wins).Render(r.Context(), w)
 	})
 	mux.HandleFunc("/hand", func(w http.ResponseWriter, r *http.Request) {
-		var rand_time = rand.New(rand.NewSource(time.Now().UTC().Unix()))
+		var timeNow = time.Now().UTC().Unix()
+		var rand_time = rand.New(rand.NewSource(timeNow))
 		hand := randHand(*rand_time)
 		log.Println(r.Header["X-Real-Ip"], hand)
 
 		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
 		currentWins := sessionManager.GetInt(r.Context(), "wins")
 
-		if isFiveOfAKind(hand) {
+		if isFiveOfAKind(hand) && sessionManager.GetInt64(r.Context(), "lastWin") < timeNow {
+			sessionManager.Put(r.Context(), "lastWin", timeNow)
 			currentWins += 1
 		}
 
