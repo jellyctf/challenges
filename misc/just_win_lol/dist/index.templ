@@ -1,0 +1,153 @@
+package main
+
+import (
+	"fmt"
+	"slices"
+	"strconv"
+
+	"golang.org/x/text/language"
+    "golang.org/x/text/message"
+)
+
+css cardPos(idx int, num string, suit string) {
+	background-position: { fmt.Sprintf("-%dpx -%dpx", slices.Index(cardValues, num) * 142, slices.Index(cardSuits, suit) * 190) };
+}
+
+templ handComponent(hand []card, handsRemaining int, currentWins int) {
+	for idx, card := range hand {
+		<div class={ "card", "pixel-corners", cardPos(idx, card.value, card.suit) }>
+			// for easier identification
+			{card.value}
+		</div>
+	}
+	if isFiveOfAKind(hand) {
+		<div hx-swap-oob="outerHTML:.score-info" class="score-info pixel-corners">
+			<div class="hand-info">Five of a Kind lvl.1</div>
+			<div class="hand-chips pixel-corners">100</div>
+			<div class="hand-x">X</div>
+			<div class="hand-mult pixel-corners">100</div>
+		</div>
+	} else {
+		<div hx-swap-oob="outerHTML:.score-info" class="score-info pixel-corners">
+			<div class="hand-info">????? lvl.?</div>
+			<div class="hand-chips pixel-corners">?</div>
+			<div class="hand-x">X</div>
+			<div class="hand-mult pixel-corners">?</div>
+		</div>
+	}
+	<span hx-swap-oob="innerHTML:.round-score-value" class="round-score-value">{ message.NewPrinter(language.English).Sprintf("%d", currentWins * 10000) }</span>
+	<div hx-swap-oob="innerHTML:.hands-number" class="hands-number pixel-corners">{ strconv.Itoa(handsRemaining) }</div>
+	if currentWins >= requiredWins {
+		<div hx-swap-oob="innerHTML:.flag" class="flag">{flag}</div>
+	}
+}
+
+templ indexComponent(handsRemaining int, currentWins int) {
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
+			<meta name="htmx-config" content='{"useTemplateFragments":true}' />
+			<link href="/static/style.css" rel="stylesheet" />
+			<script src="/static/anim.js"></script>
+			<title>just win lol</title>
+		</head>
+		<body class="scanlines" hx-get="/status" hx-trigger="load" hx-target=".sidebar-container" hx-swap="outerHTML">
+			<div class="container">
+				@sidebarComponent(handsRemaining, currentWins)
+				<div class="jokers-area">
+					<div class="jokers-amount">0/5</div>
+					<div class="jokers pixel-corners">
+						<img class="card" style="background-color: transparent; background-image:none;" src="static/turtle-bean.png" />
+						// <img class="card" style="background-color: transparent; background-image:none;" src="static/smeared-joker.png" />
+					</div>
+				</div>
+				<div class="consumables-area">
+					<div class="consumables-amount">0/2</div>
+					<div class="consumables pixel-corners"></div>
+				</div>
+				<div class="hand"></div>
+				<div class="play-area">
+					<div class="flag">
+						if currentWins >= requiredWins {
+							{flag}
+						}
+					</div>
+				</div>
+				<div class="buttons">
+					<button
+					class="pixel-corners play-hand-button"
+					hx-get="/hand"
+					hx-trigger="click"
+					hx-target=".hand"
+					hx-swap="innerHTML"
+					>
+					Get Hand
+					</button>
+					<div class="sort-hand-area pixel-corners">
+						<div class="sort-hand-text">Sort Hand</div>
+						<div class="sort-hand-rank-button pixel-corners">Rank</div>
+						<div class="sort-hand-suit-button pixel-corners">Suit</div>
+					</div>
+					<button
+					class="pixel-corners discard-hand-button"
+					hx-get="/reset"
+					hx-trigger="click"
+					hx-target=".sidebar-container"
+					hx-swap="outerHTML"
+					>
+					Reset Session
+					</button>
+					<div class="hand-drawn-amount">0/0</div>
+				</div>
+				<div class="deck"><img style="padding-left: 10px; padding-bottom: 30px; background-color: transparent; background-image: none;" class="card pixel-corners" src="static/card-back.png" /></div>
+			</div>
+		</body>
+	</html>
+}
+
+templ sidebarComponent(handsRemaining int, currentWins int) {
+	<div class="sidebar-container">
+		<div class="padding-top"></div>
+		<div class="blind-name pixel-corners">The Bigger Mouth</div>
+		<div class="blind-desc pixel-corners">
+			<div class="blind-desc-text">Only Five of a Kind hands will score this round</div>
+			<img class="blind-icon" src="static/the-mouth.png" />
+			<div class="blind-score-info pixel-corners"><span style="font-size: 20px;">Score at least</span> <span><img src="static/chip.png" /> <span style="font-size: 46px;color: #ee4a43;">{ message.NewPrinter(language.English).Sprintf("%d", requiredWins * 10000) }</span></span> <span style="font-size: 20px;">Reward: <span style="color: #e0b35c;">$$$$$$</span></span></div>
+		</div>
+		<div class="round-score pixel-corners">
+			<div class="round-score-text">Round score</div>
+			<div class="round-score-number pixel-corners"><span><img src="static/chip.png" /> <span class="round-score-value">{ message.NewPrinter(language.English).Sprintf("%d", currentWins * 10000) }</span></span></div>
+		</div>
+		<div class="score-info pixel-corners">
+			<div class="hand-info">????? lvl.?</div>
+			<div class="hand-chips pixel-corners">?</div>
+			<div class="hand-x">X</div>
+			<div class="hand-mult pixel-corners">?</div>
+		</div>
+		<div class="run-info-button pixel-corners">Run Info</div>
+		<div class="options-button pixel-corners">Options</div>
+		<div class="game-info">
+			<div class="hands pixel-corners">
+				<div class="hands-text">Hands</div>
+				<div class="hands-number pixel-corners">{ strconv.Itoa(handsRemaining) }</div>
+			</div>
+			<div class="discards pixel-corners">
+				<div class="discards-text">Discards</div>
+				<div class="discards-number pixel-corners">0</div>
+			</div>
+			<div class="money pixel-corners">
+				<div class="inner-money pixel-corners">$0</div>
+			</div>
+			<div class="ante pixel-corners">
+				<div class="ante-text">Ante</div>
+				<div class="ante-number pixel-corners"><span style="font-size: 56px;color: #fb8e02;">1</span><span style="font-size: 26px;">/</span><span style="font-size: 36px;">8</span></div>
+			</div>
+			<div class="round pixel-corners">
+				<div class="round-text">Round</div>
+				<div class="round-number pixel-corners">3</div>
+			</div>
+		</div>
+		<div class="padding-bottom"></div>
+	</div>
+}

@@ -1,0 +1,799 @@
+@font-face {
+    font-family: "m6x11plus";
+    src: url("/static/m6x11plus.ttf");
+}
+* {
+    font-family: m6x11plus, monospace;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+button {
+    color: white;
+}
+button:hover {
+    cursor: pointer;
+}
+body {
+    background-size: cover;
+    background-position: center top;   
+    background-image: url("/static/balatrobg.jpg");
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+    --rotateZ: 0deg;
+    --scale: 1;
+    /* use manually nearest neighbor scaled image instead of transform: scale otherwise we
+    get blurry images when the 3d transform is applied even with image-rendering: pixelated */
+    background-image: url("/static/balatrocards-2x.png");
+    background-color: white;
+    display: inline-block;
+    position: relative;
+    width: 142px;
+    height: 190px;
+    transform: 
+        perspective(5000px)
+        rotateX(var(--rotateX))
+        rotateY(var(--rotateY))
+        rotateZ(var(--rotateZ))
+        scale(var(--scale));
+    transform-style: preserve-3d;
+    transition: all 0.1s ease-out;
+    transition: scale 0.4s linear;
+    transition: rotateZ 0.4s linear;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    /* trigger antialiasing for 3d transforms - https://stackoverflow.com/a/27065674 */
+    outline: 1px solid transparent;
+    font-size: 0px;
+}
+
+.hand > .card {
+  margin-left: -35px;
+  margin-right: -35px;
+}
+
+.card:hover {
+    animation: wiggle 0.4s linear 1;
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+/* from https://grid.layoutit.com/?id=PrWFCTX */
+.container {  display: grid;
+  grid-template-columns: 400px 1.7fr 0.5fr; 
+  grid-template-rows: 0.9fr 0.5fr 1.0fr 0.7fr;
+  gap: 0px 20px;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-content: center;
+  justify-items: stretch;
+  align-items: stretch;
+  grid-template-areas:
+    "sidebar-container jokers-area consumables-area"
+    "sidebar-container play-area play-area"
+    "sidebar-container hand hand"
+    "sidebar-container buttons deck";
+  width: 95vw;
+  height: 100vh;
+  color: white;
+  font-size: 40px;
+}
+
+.sidebar-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3fr 0.3fr 1fr 0.3fr 1.5fr 1.0fr 1.0fr 3fr;
+  gap: 6px 6px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "padding-top padding-top padding-top"
+    "blind-name blind-name blind-name"
+    "blind-desc blind-desc blind-desc"
+    "round-score round-score round-score"
+    "score-info score-info score-info"
+    "run-info-button game-info game-info"
+    "options-button game-info game-info"
+    "padding-bottom padding-bottom padding-bottom";
+  align-self: center;
+  grid-area: sidebar-container;
+  height: 100vh;
+  background-color: rgb(54, 51, 58);
+  justify-content: center;
+  margin-left: 50px;
+  margin-right: 10px;
+}
+
+.padding-top { grid-area: padding-top; }
+
+.blind-name {
+  grid-area: blind-name;
+  justify-content: center;
+  display: grid;
+  margin: 5px;
+  background-color: rgba(150, 88, 119, .9);
+}
+
+.blind-desc {  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  grid-template-rows: 0.6fr 1.4fr;
+  gap: 0px 0px;
+  margin: 5px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "blind-desc-text blind-desc-text"
+    "blind-icon blind-score-info";
+  grid-area: blind-desc;
+  justify-content: center;
+  display: grid;
+  background-color: rgba(78, 61, 75, .9);
+}
+
+.blind-desc-text { 
+  grid-area: blind-desc-text;
+  justify-content: center;
+  display: grid;
+  font-size: 20px;
+}
+
+.blind-icon {
+  grid-area: blind-icon;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+}
+
+.blind-score-info {
+  grid-area: blind-score-info;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  display: grid;
+  background-color: rgba(27, 41, 42, .9);
+}
+
+.score-info {  display: grid;
+  grid-template-columns: 1.3fr 0.4fr 1.3fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "hand-info hand-info hand-info"
+    "hand-chips hand-x hand-mult";
+  grid-area: score-info;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  background-color: #172323;
+}
+
+.hand-info { grid-area: hand-info; justify-content: center; display: grid;}
+
+.hand-chips {
+  grid-area: hand-chips;
+  justify-content: right;
+  display: grid;
+  background-color: #0093fe;
+}
+
+.hand-x {
+  grid-area: hand-x;
+  justify-content: center;
+  display: grid;
+  color: #ff4c40;
+}
+
+.hand-mult {
+  grid-area: hand-mult;
+  justify-content: left;
+  display: grid;
+  background-color: #ff4c40;
+}
+
+.run-info-button {
+  grid-area: run-info-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ee4a39;
+  height: 150px;
+  margin-left: 10px;
+}
+
+.options-button {
+  grid-area: options-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ee9700;
+  height: 150px;
+  margin-left: 10px;
+}
+
+.game-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "hands discards"
+    "money money"
+    "ante round";
+  grid-area: game-info;
+}
+
+.hands {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "hands-text"
+    "hands-number";
+  grid-area: hands;
+  justify-items: center;
+  background-color: #a8607f;
+}
+
+.hands-number {
+  grid-area: hands-number;
+  width: 90%;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #39333c;
+  color: #0197f1;
+}
+
+.hands-text {
+  grid-area: hands-text;
+  font-size: 26px;
+}
+
+.discards {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "discards-text"
+    "discards-number";
+  grid-area: discards;
+  justify-items: center;
+  background-color: #a8607f;
+}
+
+.discards-text {
+  grid-area: discards-text;
+  font-size: 26px;
+}
+
+.discards-number {
+  grid-area: discards-number;
+  font-size: 60px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #39333c;
+  color: #f35644;
+}
+
+.money {
+  grid-area: money;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a8607f;
+}
+.inner-money {
+  font-size: 60px;
+  color: #e0b35c;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 85%;
+  justify-content: center;
+  background-color: #39333c;
+}
+
+.ante {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "ante-text"
+    "ante-number";
+  grid-area: ante;
+  background-color: #a8607f;
+  justify-items: center;
+  align-items: center;
+}
+
+.ante-text {
+  grid-area: ante-text;
+  text-align: center;
+  font-size: 26px;
+}
+
+.ante-number {
+  grid-area: ante-number;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #39333c;
+  width: 80%;
+  height: 70%;
+}
+
+.round {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 1.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "round-text"
+    "round-number";
+  grid-area: round;
+  background-color: #a8607f;
+  justify-items: center;
+  align-items: center;
+}
+
+.round-text {
+  grid-area: round-text;
+  text-align: center;
+  font-size: 26px;
+}
+
+.round-number {
+  grid-area: round-number;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 56px;
+  color: #fb8e02;
+  background-color: #39333c;
+  width: 80%;
+  height: 70%;
+}
+
+.round-score {
+  display: grid; 
+  grid-template-columns: 0.6fr 1.4fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  margin: 5px;
+  grid-template-areas: 
+    "round-score-text round-score-number"; 
+  grid-area: round-score; 
+  background-color: #a8607f;
+}
+
+.round-score-text {
+  grid-area: round-score-text;
+  font-size: 25px;
+  text-align: center;
+}
+
+.round-score-number {
+  grid-area: round-score-number;
+  background-color: #39333c;
+  font-size: 46px;
+  text-align: center;
+}
+
+.padding-bottom { grid-area: padding-bottom; }
+
+.jokers-area { 
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.7fr 0.3fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "jokers"
+    "jokers-amount";
+  grid-area: jokers-area;
+}
+
+.jokers-amount {
+  grid-area: jokers-amount;
+  font-size: 26px;
+}
+
+.jokers {
+  grid-area: jokers;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(20,20,20, .2);
+}
+
+.jokers::after {
+  background: transparent !important;
+}
+
+.consumables-area {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.7fr 0.3fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "consumables"
+    "consumables-amount";
+  grid-area: consumables-area;
+  justify-items: end;
+  align-items: end;
+}
+
+.consumables-amount {
+  grid-area: consumables-amount;
+  align-self: start;
+  font-size: 26px;
+}
+
+.consumables {
+  grid-area: consumables;
+  padding-top: 75px;
+  height:100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(20,20,20, .2);
+}
+
+.consumables::after {
+  background: transparent !important;
+}
+
+.hand {
+  grid-area: hand;
+  margin-left: 10%;
+}
+
+.play-area {
+  grid-area: play-area;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.flag {
+  background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 1s ease infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes rainbow_animation {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 0.3fr 0.2fr 0.3fr;
+  grid-template-rows: 0.2fr 0.6fr;
+  align-content: center;
+  justify-content: center;
+  gap: 6px 6px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". hand-drawn-amount ."
+    "play-hand-button sort-hand-area discard-hand-button";
+  grid-area: buttons;
+}
+
+.play-hand-button {
+  grid-area: play-hand-button; 
+  font-size: 60px;
+  /* width: 15rem;
+  height: 5rem; */
+  background-color: #0a8eee;
+}
+
+.sort-hand-area {  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 1.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  justify-items: center;
+  align-items: center;
+  grid-template-areas:
+    "sort-hand-text sort-hand-text"
+    "sort-hand-rank-button sort-hand-suit-button";
+  grid-area: sort-hand-area;
+  border: 10px solid white !important;
+}
+
+.sort-hand-text {
+  grid-area: sort-hand-text;
+  text-align: center;
+  font-size: 36px;
+}
+
+.sort-hand-rank-button {
+  grid-area: sort-hand-rank-button;
+  text-align: center;
+  background-color: #ee9700;
+  padding: 10px;
+  font-size: 26px;
+}
+.sort-hand-suit-button {
+  grid-area: sort-hand-suit-button;
+  text-align: center;
+  background-color: #ee9700;
+  padding: 10px;
+  font-size: 26px;
+}
+
+
+.discard-hand-button {
+  grid-area: discard-hand-button;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ff4c40;
+}
+
+.hand-drawn-amount {
+  grid-area: hand-drawn-amount;
+  text-align: center;
+  font-size: 26px;
+  align-self: end;
+}
+
+.deck {
+  grid-area: deck;
+  margin-left: 50%;
+}
+
+
+
+/* from https://easings.net/#easeInElastic which roughly
+approximates Balatro's Moveable:move_juice() eyeballing it on wolframalpha's plot
+when reversed and the last keyframe is set to 1
+move_juice() is
+0.02 * sin(50.8*t) * max(0, 0.4 - t/ 0.4)^3 for scale and
+0.0012 * sin(40.8*t) * max(0, 0.4 - t/ 0.4)^2 for rotation
+*/
+@keyframes wiggle {
+    0% {
+        transform:
+            perspective(5000px)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+            rotateZ(var(--rotateZ))
+            scale(calc(var(--scale) * 1));
+
+    }
+    4% {
+        transform:
+            perspective(5000px)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+            rotateZ(calc(var(--rotateZ) - 6deg))
+            scale(calc(var(--scale) * 1.37));
+    }
+    8% {
+        transform:
+            perspective(5000px)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+            rotateZ(calc(var(--rotateZ) + 4deg))
+            scale(calc(var(--scale) * 0.87));
+    }
+    14% {
+        transform:
+            perspective(5000px)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+            rotateZ(calc(var(--rotateZ) - 3deg))
+            scale(calc(var(--scale) * 1.04));
+    }
+    18% {
+        transform:
+            perspective(5000px)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+            rotateZ(calc(var(--rotateZ) + 2deg))
+            scale(calc(var(--scale) * 1.05));
+    }
+    26%, 28% {
+        transform:
+            perspective(5000px)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+            rotateZ(calc(var(--rotateZ) - 1deg))
+            scale(calc(var(--scale) * 0.98));
+    }
+    40%, 42% {
+        transform:
+            perspective(5000px)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+            rotateZ(calc(var(--rotateZ) - 1deg))
+            scale(calc(var(--scale) * 1.01));
+    }
+    56%, 58%, 72%, 86%, 100% {
+        transform:
+            perspective(5000px)
+            rotateX(var(--rotateX))
+            rotateY(var(--rotateY))
+            rotateZ(var(--rotateZ))
+            scale(var(--scale));
+    }
+}
+/* from https://codepen.io/meduzen/pen/zxbwRV */
+.scanlines {
+    position: relative;
+    overflow: hidden;
+}
+.scanlines:before, .scanlines:after {
+    display: block;
+    pointer-events: none;
+    content: "";
+    position: absolute;
+}
+.scanlines:before {
+    width: 100%;
+    height: 2px;
+    z-index: 2147483649;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.3;
+}
+.scanlines:after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2147483648;
+    background: linear-gradient(to bottom, transparent 50%, rgba(100, 100, 100, 0.1) 51%);
+    background-size: 100% 4px;
+}
+
+/* from https://pixelcorners.lukeb.co.uk/?radius=5&multiplier=3&border=1&border_width=1&border_color=#cacfd0 */
+.pixel-corners,
+.pixel-corners--wrapper {
+    clip-path: polygon(0px calc(100% - 9px),
+        3px calc(100% - 9px),
+        3px calc(100% - 6px),
+        6px calc(100% - 3px),
+        9px calc(100% - 3px),
+        9px 100%,
+        calc(100% - 9px) 100%,
+        calc(100% - 9px) calc(100% - 3px),
+        calc(100% - 6px) calc(100% - 3px),
+        calc(100% - 3px) calc(100% - 6px),
+        calc(100% - 3px) calc(100% - 9px),
+        100% calc(100% - 9px),
+        100% 9px,
+        calc(100% - 3px) 9px,
+        calc(100% - 3px) 6px,
+        calc(100% - 6px) 3px,
+        calc(100% - 9px) 3px,
+        calc(100% - 9px) 0px,
+        9px 0px,
+        9px 3px,
+        6px 3px,
+        3px 6px,
+        3px 9px,
+        0px 9px);
+    position: relative;
+}
+.pixel-corners {
+    border: 3px solid transparent;
+}
+.pixel-corners--wrapper {
+    width: fit-content;
+    height: fit-content;
+}
+.pixel-corners--wrapper .pixel-corners {
+    display: block;
+    clip-path: polygon(3px 9px,
+        6px 9px,
+        6px 6px,
+        9px 6px,
+        9px 3px,
+        calc(100% - 9px) 3px,
+        calc(100% - 9px) 6px,
+        calc(100% - 6px) 6px,
+        calc(100% - 6px) 9px,
+        calc(100% - 3px) 9px,
+        calc(100% - 3px) calc(100% - 9px),
+        calc(100% - 6px) calc(100% - 9px),
+        calc(100% - 6px) calc(100% - 6px),
+        calc(100% - 9px) calc(100% - 6px),
+        calc(100% - 9px) calc(100% - 3px),
+        9px calc(100% - 3px),
+        9px calc(100% - 6px),
+        6px calc(100% - 6px),
+        6px calc(100% - 9px),
+        3px calc(100% - 9px));
+}
+.pixel-corners::after,
+.pixel-corners--wrapper::after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0px calc(100% - 9px),
+        3px calc(100% - 9px),
+        3px calc(100% - 6px),
+        6px calc(100% - 3px),
+        9px calc(100% - 3px),
+        9px 100%,
+        calc(100% - 9px) 100%,
+        calc(100% - 9px) calc(100% - 3px),
+        calc(100% - 6px) calc(100% - 3px),
+        calc(100% - 3px) calc(100% - 6px),
+        calc(100% - 3px) calc(100% - 9px),
+        100% calc(100% - 9px),
+        100% 9px,
+        calc(100% - 3px) 9px,
+        calc(100% - 3px) 6px,
+        calc(100% - 6px) 3px,
+        calc(100% - 9px) 3px,
+        calc(100% - 9px) 0px,
+        9px 0px,
+        9px 3px,
+        6px 3px,
+        3px 6px,
+        3px 9px,
+        0px 9px,
+        0px 50%,
+        3px 50%,
+        3px 9px,
+        6px 9px,
+        6px 6px,
+        9px 6px,
+        9px 3px,
+        calc(100% - 9px) 3px,
+        calc(100% - 9px) 6px,
+        calc(100% - 6px) 6px,
+        calc(100% - 6px) 9px,
+        calc(100% - 3px) 9px,
+        calc(100% - 3px) calc(100% - 9px),
+        calc(100% - 6px) calc(100% - 9px),
+        calc(100% - 6px) calc(100% - 6px),
+        calc(100% - 9px) calc(100% - 6px),
+        calc(100% - 9px) calc(100% - 3px),
+        9px calc(100% - 3px),
+        9px calc(100% - 6px),
+        6px calc(100% - 6px),
+        6px calc(100% - 9px),
+        3px calc(100% - 9px),
+        3px 50%,
+        0px 50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* background: #cacfd0; */
+    background-color: rgba(28, 37, 41, .5);
+    display: block;
+    pointer-events: none;
+}
+.pixel-corners::after {
+    margin: -3px;
+}
