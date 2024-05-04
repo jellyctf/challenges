@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/a-h/templ"
+	"github.com/alexedwards/scs/v2"
 )
 
 type card struct {
@@ -19,9 +19,12 @@ func (c *card) String() string {
 	return fmt.Sprintf("%s%s", c.value, c.suit)
 }
 
+var flag = "jellyCTF{wow}"
 var cardValues = []string{"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"}
 var cardSuits = []string{"h", "c", "d", "s"}
 var handSize = 12
+var requiredWins = 5
+var sessionManager *scs.SessionManager
 
 func randHand(r rand.Rand) []card {
 	hand := make([]card, handSize)
@@ -49,55 +52,58 @@ func isFiveOfAKind(hand []card) bool {
 }
 
 func main() {
-	http.Handle("/", templ.Handler(indexComponent()))
-	http.HandleFunc("/hand", func(w http.ResponseWriter, r *http.Request) {
+	sessionManager = scs.New()
+	sessionManager.Lifetime = 24 * time.Hour
+
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if !sessionManager.Exists(r.Context(), "handsRemaining") || !sessionManager.Exists(r.Context(), "wins") {
+			sessionManager.Put(r.Context(), "handsRemaining", 10)
+			sessionManager.Put(r.Context(), "wins", 0)
+		}
+		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
+		wins := sessionManager.GetInt(r.Context(), "wins")
+		indexComponent(handsRemaining, wins).Render(r.Context(), w)
+	})
+	mux.HandleFunc("/hand", func(w http.ResponseWriter, r *http.Request) {
 		var rand_time = rand.New(rand.NewSource(time.Now().UTC().Unix()))
 		hand := randHand(*rand_time)
 		log.Println(r.Header["X-Real-Ip"], hand)
-		handComponent(hand).Render(r.Context(), w)
+
+		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
+		currentWins := sessionManager.GetInt(r.Context(), "wins")
+
+		if isFiveOfAKind(hand) {
+			currentWins += 1
+		}
+
+		if handsRemaining <= 0 {
+			handsRemaining = 10
+			currentWins = 0
+		} else {
+			handsRemaining -= 1
+		}
+
+		sessionManager.Put(r.Context(), "handsRemaining", handsRemaining)
+		sessionManager.Put(r.Context(), "wins", currentWins)
+		handComponent(hand, handsRemaining, currentWins).Render(r.Context(), w)
+	})
+	mux.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
+		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
+		wins := sessionManager.GetInt(r.Context(), "wins")
+		sidebarComponent(handsRemaining, wins).Render(r.Context(), w)
+	})
+	mux.HandleFunc("/reset", func(w http.ResponseWriter, r *http.Request) {
+		sessionManager.Put(r.Context(), "handsRemaining", 10)
+		sessionManager.Put(r.Context(), "wins", 0)
+		sidebarComponent(10, 0).Render(r.Context(), w)
 	})
 	fs := http.FileServer(http.Dir("assets/"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	mux.Handle("/static/", http.StripPrefix("/static/", fs))
+
+	muxWithSessionMiddleware := sessionManager.LoadAndSave(mux)
 
 	log.Println("startup")
-	log.Fatal(http.ListenAndServe(":8080", nil))
-
-	// timeNow := time.Now().UTC().Unix()
-	// fmt.Println(timeNow)
-
-	// count := 0
-	// results := make([]int64, 100)
-	// for count < 100 {
-	// 	done := false
-	// 	origTime := timeNow
-	// 	for !done {
-	// 		var r = rand.New(rand.NewSource(timeNow))
-	// 		hand := randHand(*r)
-	// 		if isFiveOfAKind(hand) {
-	// 			done = true
-	// 		}
-	// 		timeNow++
-	// 	}
-	// 	results[count] = timeNow - origTime
-	// 	count++
-	// }
-	// fmt.Println(findStats(results))
+	log.Fatal(http.ListenAndServe(":8080", muxWithSessionMiddleware))
 }
-
-// func findStats(slice []int64) (float64, int64, int64) {
-// 	var sum int64
-// 	sum = 0
-// 	min := slice[0]
-// 	max := slice[0]
-// 	for _, element := range slice {
-// 		sum += element
-// 		if element < min {
-// 			min = element
-// 		}
-// 		if element > max {
-// 			max = element
-// 		}
-// 	}
-// 	mean := float64(sum) / float64(len(slice))
-// 	return mean, min, max
-// }

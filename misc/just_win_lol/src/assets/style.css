@@ -143,7 +143,8 @@ body {
 .blind-icon {
   grid-area: blind-icon;
   align-self: center;
-  display: grid;
+  justify-self: center;
+  display: flex;
 }
 
 .blind-score-info {
@@ -465,7 +466,29 @@ body {
   margin-left: 10%;
 }
 
-.play-area { grid-area: play-area; }
+.play-area {
+  grid-area: play-area;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.flag {
+  background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 1s ease infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes rainbow_animation {
+  0%, 100% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
 
 .buttons {
   display: grid;
