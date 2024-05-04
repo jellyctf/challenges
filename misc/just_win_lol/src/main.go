@@ -60,7 +60,9 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r.Header["X-Real-Ip"], "/")
 		if !sessionManager.Exists(r.Context(), "handsRemaining") || !sessionManager.Exists(r.Context(), "wins") {
+			log.Println(r.Header["X-Real-Ip"], "new session")
 			sessionManager.Put(r.Context(), "handsRemaining", 10)
 			sessionManager.Put(r.Context(), "wins", 0)
 		}
@@ -92,11 +94,13 @@ func main() {
 		handComponent(hand, handsRemaining, currentWins).Render(r.Context(), w)
 	})
 	mux.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r.Header["X-Real-Ip"], "/status")
 		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
 		wins := sessionManager.GetInt(r.Context(), "wins")
 		sidebarComponent(handsRemaining, wins).Render(r.Context(), w)
 	})
 	mux.HandleFunc("/reset", func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r.Header["X-Real-Ip"], "/reset")
 		sessionManager.Put(r.Context(), "handsRemaining", 10)
 		sessionManager.Put(r.Context(), "wins", 0)
 		sidebarComponent(10, 0).Render(r.Context(), w)
