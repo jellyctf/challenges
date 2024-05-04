@@ -1,0 +1,3 @@
+Hex editor --> Fix corrupted file signature --> change "mpreg4" --> "mp4"
+
+File exentaion MAY need to be changed mpreg4 --> mp4 (this may not actually be needed if a video player can infer from metadata)

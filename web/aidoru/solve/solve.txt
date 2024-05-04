@@ -1,0 +1,5 @@
+UUIDs are MD5 hashes of talent names, as shown in the home page jpegs
+jelly = 328356824c8487cf314aa350d11ae145
+i.e. go to /covers/328356824c8487cf314aa350d11ae145
+
+Find flag in source code - part of video embed link
