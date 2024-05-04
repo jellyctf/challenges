@@ -21,7 +21,7 @@ func (c *card) String() string {
 	return fmt.Sprintf("%s%s", c.value, c.suit)
 }
 
-var flag = "jellyCTF{wow}"
+var flag = "jellyCTF{its_v3ry_stra1ghtf0rw4rd_s1mply_g3t_g00d_rng}"
 var cardValues = []string{"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"}
 var cardSuits = []string{"h", "c", "d", "s"}
 var handSize = 12
