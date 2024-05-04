@@ -8,6 +8,8 @@ import (
 	"time"
 
 	"github.com/alexedwards/scs/v2"
+	"github.com/sethvargo/go-limiter/httplimit"
+	"github.com/sethvargo/go-limiter/memorystore"
 )
 
 type card struct {
@@ -102,7 +104,22 @@ func main() {
 	fs := http.FileServer(http.Dir("assets/"))
 	mux.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	muxWithSessionMiddleware := sessionManager.LoadAndSave(mux)
+	store, err := memorystore.New(&memorystore.Config{
+		// Number of tokens allowed per interval.
+		Tokens: 60,
+
+		// Interval until tokens reset.
+		Interval: time.Minute,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	limiterMiddleware, err := httplimit.NewMiddleware(store, httplimit.IPKeyFunc())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	muxWithSessionMiddleware := limiterMiddleware.Handle(sessionManager.LoadAndSave(mux))
 
 	log.Println("startup")
 	log.Fatal(http.ListenAndServe(":8080", muxWithSessionMiddleware))
