@@ -1,0 +1,20 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}" />
+</head>
+<body>
+
+<h1>My Favourite Phase Connect covers</h1>
+
+{% for i in range(0, len//3) %}
+<div class="row">
+    {% for j in range(3) %}
+    <div class="col">
+        <img src="{{url_for('static', filename='images/' + talents[3*i + j] + '.jpg')}}" onclick="window.location='{{get_profile(talents[3*i + j])}}'" class="hover-shadow preview">
+    </div>
+    {% endfor %}
+</div>
+{%endfor%}
+
+</body>
+</html>

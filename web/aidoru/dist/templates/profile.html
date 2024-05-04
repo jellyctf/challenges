@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+
+<body>
+<h1>{{data.name}}</h1>
+
+{% for n in data["covers"] %}
+    <h2>{{n.name}}</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{n.link}}?autoplay={{n.autoplay}};start={{n.start}}"></iframe>
+{% endfor %}
+
+</body>
