@@ -1,0 +1,1 @@
+Pasting the whole text into the Awa 5.0 interpreter will print the flag
