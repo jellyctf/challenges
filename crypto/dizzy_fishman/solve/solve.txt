@@ -1,0 +1,17 @@
+Diffie Hellman Key Exchange
+Use g = p - 1
+This will force the constructed shared secret key to be 1 (or p-1), which can be identified from the public keys
+Use online AES decryption tool to decrypt (AES256, ECB mode) - e.g. https://the-x.cn/en-US/cryptography/Aes.aspx
+
+More details:
+Steps in Diffie Hellman Key Exchange are
+1. p and g are selected - here we have a choice for g
+2. Alice has a private key 'a'; Bob has a private key 'b'
+3. Alice's public key is g^a mod p - this is transmitted publicly
+4. Bob's public key is g^b mod p   - this is transmitted publicly
+5. The shared secret is s = g^(ab) mod p
+    > If g = p - 1, then g mod p = (p-1) mod p = -1 mod p
+    > Then s = (-1)^(ab) mod p
+    > This can only be 1 or (-1) mod p regardless of a and b
+    > So, s = 1 mod p, i.e. s = 1 OR s = (-1) mod p, i.e. s = p - 1
+    > Try using both keys to decrypt

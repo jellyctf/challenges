@@ -1,0 +1,1 @@
+jellyCTF{SOS_stuck_in_warehouse}
