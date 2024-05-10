@@ -81,7 +81,7 @@ func handComponent(hand []card, handsRemaining int, currentWins int) templ.Compo
 			}
 		}
 		if isFiveOfAKind(hand) {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div hx-swap-oob=\"outerHTML:.score-info\" class=\"score-info pixel-corners\"><div class=\"hand-info\">Five of a Kind lvl.1</div><div class=\"hand-chips pixel-corners\">100</div><div class=\"hand-x\">X</div><div class=\"hand-mult pixel-corners\">100</div></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div hx-swap-oob=\"outerHTML:.score-info\" class=\"score-info pixel-corners\"><div class=\"hand-info\">Five of a Kind lvl.1</div><div class=\"hand-chips pixel-corners\">100</div><div class=\"hand-x\">X</div><div class=\"hand-mult pixel-corners\">10</div></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -96,9 +96,9 @@ func handComponent(hand []card, handsRemaining int, currentWins int) templ.Compo
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", currentWins*10000))
+		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", currentWins*1000))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 38, Col: 149}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 38, Col: 148}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -212,9 +212,9 @@ func sidebarComponent(handsRemaining int, currentWins int) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var11 string
-		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", requiredWins*10000))
+		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", requiredWins*1000))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 116, Col: 256}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 116, Col: 255}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
@@ -225,9 +225,9 @@ func sidebarComponent(handsRemaining int, currentWins int) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var12 string
-		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", currentWins*10000))
+		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", currentWins*1000))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 120, Col: 190}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 120, Col: 189}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -246,7 +246,7 @@ func sidebarComponent(handsRemaining int, currentWins int) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><div class=\"discards pixel-corners\"><div class=\"discards-text\">Discards</div><div class=\"discards-number pixel-corners\">0</div></div><div class=\"money pixel-corners\"><div class=\"inner-money pixel-corners\">$0</div></div><div class=\"ante pixel-corners\"><div class=\"ante-text\">Ante</div><div class=\"ante-number pixel-corners\"><span style=\"font-size: 56px;color: #fb8e02;\">1</span><span style=\"font-size: 26px;\">/</span><span style=\"font-size: 36px;\">8</span></div></div><div class=\"round pixel-corners\"><div class=\"round-text\">Round</div><div class=\"round-number pixel-corners\">3</div></div></div><div class=\"padding-bottom\"></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><div class=\"discards pixel-corners\"><div class=\"discards-text\">Discards</div><div class=\"discards-number pixel-corners\">0</div></div><div class=\"money pixel-corners\"><div class=\"inner-money pixel-corners\">$0</div></div><div class=\"ante pixel-corners\"><div class=\"ante-text\">Ante</div><div class=\"ante-number pixel-corners\"><span style=\"font-size: 56px;color: #fb8e02;\">3</span><span style=\"font-size: 26px;\">/</span><span style=\"font-size: 36px;\">8</span></div></div><div class=\"round pixel-corners\"><div class=\"round-text\">Round</div><div class=\"round-number pixel-corners\">12</div></div></div><div class=\"padding-bottom\"></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

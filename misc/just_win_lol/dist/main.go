@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/MadAppGang/httplog"
 	"github.com/alexedwards/scs/v2"
 	"github.com/sethvargo/go-limiter/httplimit"
 	"github.com/sethvargo/go-limiter/memorystore"
@@ -60,7 +61,6 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		log.Println(r.Header["X-Real-Ip"], "/")
 		if !sessionManager.Exists(r.Context(), "handsRemaining") || !sessionManager.Exists(r.Context(), "wins") {
 			log.Println(r.Header["X-Real-Ip"], "new session")
 			sessionManager.Put(r.Context(), "handsRemaining", 10)
@@ -96,13 +96,11 @@ func main() {
 		handComponent(hand, handsRemaining, currentWins).Render(r.Context(), w)
 	})
 	mux.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
-		log.Println(r.Header["X-Real-Ip"], "/status")
 		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
 		wins := sessionManager.GetInt(r.Context(), "wins")
 		sidebarComponent(handsRemaining, wins).Render(r.Context(), w)
 	})
 	mux.HandleFunc("/reset", func(w http.ResponseWriter, r *http.Request) {
-		log.Println(r.Header["X-Real-Ip"], "/reset")
 		sessionManager.Put(r.Context(), "handsRemaining", 10)
 		sessionManager.Put(r.Context(), "wins", 0)
 		sidebarComponent(10, 0).Render(r.Context(), w)
@@ -112,7 +110,7 @@ func main() {
 
 	store, err := memorystore.New(&memorystore.Config{
 		// Number of tokens allowed per interval.
-		Tokens: 60,
+		Tokens: 30,
 
 		// Interval until tokens reset.
 		Interval: time.Minute,
@@ -125,7 +123,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	muxWithSessionMiddleware := limiterMiddleware.Handle(sessionManager.LoadAndSave(mux))
+	muxWithSessionMiddleware := httplog.Logger(limiterMiddleware.Handle(sessionManager.LoadAndSave(mux)))
 
 	log.Println("startup")
 	log.Fatal(http.ListenAndServe(":8080", muxWithSessionMiddleware))

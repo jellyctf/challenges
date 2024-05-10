@@ -25,7 +25,7 @@ templ handComponent(hand []card, handsRemaining int, currentWins int) {
 			<div class="hand-info">Five of a Kind lvl.1</div>
 			<div class="hand-chips pixel-corners">100</div>
 			<div class="hand-x">X</div>
-			<div class="hand-mult pixel-corners">100</div>
+			<div class="hand-mult pixel-corners">10</div>
 		</div>
 	} else {
 		<div hx-swap-oob="outerHTML:.score-info" class="score-info pixel-corners">
@@ -35,7 +35,7 @@ templ handComponent(hand []card, handsRemaining int, currentWins int) {
 			<div class="hand-mult pixel-corners">?</div>
 		</div>
 	}
-	<span hx-swap-oob="innerHTML:.round-score-value" class="round-score-value">{ message.NewPrinter(language.English).Sprintf("%d", currentWins * 10000) }</span>
+	<span hx-swap-oob="innerHTML:.round-score-value" class="round-score-value">{ message.NewPrinter(language.English).Sprintf("%d", currentWins * 1000) }</span>
 	<div hx-swap-oob="innerHTML:.hands-number" class="hands-number pixel-corners">{ strconv.Itoa(handsRemaining) }</div>
 	if currentWins >= requiredWins {
 		<div hx-swap-oob="innerHTML:.flag" class="flag">{flag}</div>
@@ -113,11 +113,11 @@ templ sidebarComponent(handsRemaining int, currentWins int) {
 		<div class="blind-desc pixel-corners">
 			<div class="blind-desc-text">Only Five of a Kind hands will score this round</div>
 			<img class="blind-icon" src="static/the-mouth.png" />
-			<div class="blind-score-info pixel-corners"><span style="font-size: 20px;">Score at least</span> <span><img src="static/chip.png" /> <span style="font-size: 46px;color: #ee4a43;">{ message.NewPrinter(language.English).Sprintf("%d", requiredWins * 10000) }</span></span> <span style="font-size: 20px;">Reward: <span style="color: #e0b35c;">$$$$$$</span></span></div>
+			<div class="blind-score-info pixel-corners"><span style="font-size: 20px;">Score at least</span> <span><img src="static/chip.png" /> <span style="font-size: 46px;color: #ee4a43;">{ message.NewPrinter(language.English).Sprintf("%d", requiredWins * 1000) }</span></span> <span style="font-size: 20px;">Reward: <span style="color: #e0b35c;">$$$$$$</span></span></div>
 		</div>
 		<div class="round-score pixel-corners">
 			<div class="round-score-text">Round score</div>
-			<div class="round-score-number pixel-corners"><span><img src="static/chip.png" /> <span class="round-score-value">{ message.NewPrinter(language.English).Sprintf("%d", currentWins * 10000) }</span></span></div>
+			<div class="round-score-number pixel-corners"><span><img src="static/chip.png" /> <span class="round-score-value">{ message.NewPrinter(language.English).Sprintf("%d", currentWins * 1000) }</span></span></div>
 		</div>
 		<div class="score-info pixel-corners">
 			<div class="hand-info">????? lvl.?</div>
@@ -141,11 +141,11 @@ templ sidebarComponent(handsRemaining int, currentWins int) {
 			</div>
 			<div class="ante pixel-corners">
 				<div class="ante-text">Ante</div>
-				<div class="ante-number pixel-corners"><span style="font-size: 56px;color: #fb8e02;">1</span><span style="font-size: 26px;">/</span><span style="font-size: 36px;">8</span></div>
+				<div class="ante-number pixel-corners"><span style="font-size: 56px;color: #fb8e02;">3</span><span style="font-size: 26px;">/</span><span style="font-size: 36px;">8</span></div>
 			</div>
 			<div class="round pixel-corners">
 				<div class="round-text">Round</div>
-				<div class="round-number pixel-corners">3</div>
+				<div class="round-number pixel-corners">12</div>
 			</div>
 		</div>
 		<div class="padding-bottom"></div>
