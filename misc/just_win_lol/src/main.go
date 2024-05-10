@@ -110,7 +110,7 @@ func main() {
 
 	store, err := memorystore.New(&memorystore.Config{
 		// Number of tokens allowed per interval.
-		Tokens: 60,
+		Tokens: 30,
 
 		// Interval until tokens reset.
 		Interval: time.Minute,
