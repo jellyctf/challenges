@@ -1,5 +1,7 @@
 # challenges
 
+## chals
+
 ## folder structure
 * category
     - challenge name
