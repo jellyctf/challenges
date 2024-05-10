@@ -6,3 +6,5 @@ flightera.net
 Can narrow down 1 flight from Tokyo to New York
 
 Additional context clues from timezone "Good morning" tweet
+
+jellyCTF{new_york,usa}
