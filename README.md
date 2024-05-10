@@ -22,9 +22,9 @@
 | stalknights_3                | osint     | Sheepiroo   | ?      |
 | stalknights_6                | osint     | Sheepiroo   | ?      |
 | super_fan                    | osint     | arepi_nemui | ?      |
-| phase_coffee                 | osint     | Sheepiroo   | ?      |
-| phase_coffee_FINAL           | osint     | Sheepiroo   | ?      |
-| phase_coffee_FINAL_UPDATED   | osint     | Sheepiroo   | ?      |
+| phase_coffee                 | pwn       | Sheepiroo   | ?      |
+| phase_coffee_FINAL           | pwn       | Sheepiroo   | ?      |
+| phase_coffee_FINAL_UPDATED   | pwn       | Sheepiroo   | ?      |
 | lost_in_translation          | rev       | kuuhaku0989 | ?      |
 | rev1                         | rev       | arepi_nemui | ?      |
 | aidoru                       | web       | Sheepiroo   | ?      |
