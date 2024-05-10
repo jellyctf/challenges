@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"slices"
 	"time"
 )
 
@@ -45,22 +46,47 @@ func isFiveOfAKind(hand []card) bool {
 }
 
 func main() {
-	getLikeliness()
+	//getLikeliness()
 
 	timeNow := time.Now().UTC().Unix()
 
 	count := 0
-	results := make(map[time.Time][]card, 10)
+	results := make(map[int64]bool, 10)
 	for count < 10 {
 		var r = rand.New(rand.NewSource(timeNow))
 		hand := randHand(*r)
 		if isFiveOfAKind(hand) {
-			results[time.Unix(timeNow, 0)] = hand
+			results[timeNow] = true
 			count++
+		} else {
+			results[timeNow] = false
 		}
 		timeNow++
 	}
-	fmt.Println(results)
+
+	keys := make([]int64, 0, len(results))
+	for k, _ := range results {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	slices.Reverse(keys)
+	for {
+		for _, t := range keys {
+			relativeTime := t - time.Now().UTC().Unix()
+			hit := results[t]
+			if relativeTime < 0 || (relativeTime > 10 && !hit) {
+				continue
+			}
+			if hit {
+				fmt.Print(">>>")
+				if relativeTime == 10 {
+					fmt.Print("\a")
+				}
+			}
+			fmt.Println(relativeTime)
+		}
+		time.Sleep(time.Second)
+	}
 }
 
 func getLikeliness() {
