@@ -10,6 +10,7 @@
 | alien_transmission           | forensics | Sheepiroo   | ?      |
 | head_empty                   | forensics | arepi_nemui | ?      |
 | mpreg                        | forensics | Sheepiroo   | ?      |
+| oshi_mark                    | forensics | 2ndmeow     | ?      |
 | the_REAL_truth               | forensics | arepi_nemui | ?      |
 | the_REAL_truth_2             | misc      | arepi_nemui | ?      |
 | just_win_lol                 | misc      | arepi_nemui | ?      |
