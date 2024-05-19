@@ -22,7 +22,6 @@ func (c *card) String() string {
 	return fmt.Sprintf("%s%s", c.value, c.suit)
 }
 
-var flag = "jellyCTF{its_v3ry_stra1ghtf0rw4rd_s1mply_g3t_g00d_rng}"
 var cardValues = []string{"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"}
 var cardSuits = []string{"h", "c", "d", "s"}
 var handSize = 12
@@ -56,7 +55,7 @@ func isFiveOfAKind(hand []card) bool {
 
 func main() {
 	sessionManager = scs.New()
-	sessionManager.Lifetime = 24 * time.Hour
+	sessionManager.Lifetime = 20 * time.Minute
 
 	mux := http.NewServeMux()
 
@@ -68,9 +67,12 @@ func main() {
 		}
 		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
 		wins := sessionManager.GetInt(r.Context(), "wins")
+
+		// from index.templ
 		indexComponent(handsRemaining, wins).Render(r.Context(), w)
 	})
 	mux.HandleFunc("/hand", func(w http.ResponseWriter, r *http.Request) {
+		// current time in unix seconds
 		var timeNow = time.Now().UTC().Unix()
 		var rand_time = rand.New(rand.NewSource(timeNow))
 		hand := randHand(*rand_time)
@@ -93,16 +95,22 @@ func main() {
 
 		sessionManager.Put(r.Context(), "handsRemaining", handsRemaining)
 		sessionManager.Put(r.Context(), "wins", currentWins)
+
+		// from index.templ
 		handComponent(hand, handsRemaining, currentWins).Render(r.Context(), w)
 	})
 	mux.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
 		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
 		wins := sessionManager.GetInt(r.Context(), "wins")
+
+		// from index.templ
 		sidebarComponent(handsRemaining, wins).Render(r.Context(), w)
 	})
 	mux.HandleFunc("/reset", func(w http.ResponseWriter, r *http.Request) {
 		sessionManager.Put(r.Context(), "handsRemaining", 10)
 		sessionManager.Put(r.Context(), "wins", 0)
+
+		// from index.templ
 		sidebarComponent(10, 0).Render(r.Context(), w)
 	})
 	fs := http.FileServer(http.Dir("assets/"))

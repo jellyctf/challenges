@@ -9,6 +9,8 @@ import (
     "golang.org/x/text/message"
 )
 
+var flag = "jellyCTF{its_v3ry_stra1ghtf0rw4rd_s1mply_g3t_g00d_rng}"
+
 css cardPos(idx int, num string, suit string) {
 	background-position: { fmt.Sprintf("-%dpx -%dpx", slices.Index(cardValues, num) * 142, slices.Index(cardSuits, suit) * 190) };
 }
@@ -59,7 +61,6 @@ templ indexComponent(handsRemaining int, currentWins int) {
 					<div class="jokers-amount">0/5</div>
 					<div class="jokers pixel-corners">
 						<img class="card" style="background-color: transparent; background-image:none;" src="static/turtle-bean.png" />
-						// <img class="card" style="background-color: transparent; background-image:none;" src="static/smeared-joker.png" />
 					</div>
 				</div>
 				<div class="consumables-area">
@@ -82,7 +83,7 @@ templ indexComponent(handsRemaining int, currentWins int) {
 					hx-target=".hand"
 					hx-swap="innerHTML"
 					>
-					Get Hand
+					Draw & Play Hand
 					</button>
 					<div class="sort-hand-area pixel-corners">
 						<div class="sort-hand-text">Sort Hand</div>
@@ -96,7 +97,7 @@ templ indexComponent(handsRemaining int, currentWins int) {
 					hx-target=".sidebar-container"
 					hx-swap="outerHTML"
 					>
-					Reset Session
+					Reset
 					</button>
 					<div class="hand-drawn-amount">0/0</div>
 				</div>

@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
     int key = get_key();
 
     if (strcmp(argv[1], "hint") == 0) {
-        puts("use secure secret value of the princess' age\n");
+        puts("use secure secret value of the princess' age");
         return key;
     }
 
@@ -26,11 +26,11 @@ int main(int argc, char **argv) {
         output[i]=flag[i]+key;
     }
     if (strcmp(output, argv[1]) == 0) {
-        puts("Flag correct!\n");
+        puts("Flag correct!");
         return 0;
     }
     else {
-        puts("Flag incorrect.\n");
+        puts("Flag incorrect.");
         return 1;
     }
 }

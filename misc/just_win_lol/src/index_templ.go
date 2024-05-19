@@ -20,6 +20,8 @@ import (
 	"golang.org/x/text/message"
 )
 
+var flag = "jellyCTF{its_v3ry_stra1ghtf0rw4rd_s1mply_g3t_g00d_rng}"
+
 func cardPos(idx int, num string, suit string) templ.CSSClass {
 	var templ_7745c5c3_CSSBuilder strings.Builder
 	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`background-position`, fmt.Sprintf("-%dpx -%dpx", slices.Index(cardValues, num)*142, slices.Index(cardSuits, suit)*190))))
@@ -69,7 +71,7 @@ func handComponent(hand []card, handsRemaining int, currentWins int) templ.Compo
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(card.value)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 20, Col: 14}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 22, Col: 14}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -98,7 +100,7 @@ func handComponent(hand []card, handsRemaining int, currentWins int) templ.Compo
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", currentWins*1000))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 38, Col: 148}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 40, Col: 148}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -111,7 +113,7 @@ func handComponent(hand []card, handsRemaining int, currentWins int) templ.Compo
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(strconv.Itoa(handsRemaining))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 39, Col: 109}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 41, Col: 109}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -129,7 +131,7 @@ func handComponent(hand []card, handsRemaining int, currentWins int) templ.Compo
 			var templ_7745c5c3_Var7 string
 			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(flag)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 41, Col: 55}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 43, Col: 55}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {
@@ -176,14 +178,14 @@ func indexComponent(handsRemaining int, currentWins int) templ.Component {
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(flag)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 73, Col: 12}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 74, Col: 12}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><div class=\"buttons\"><button class=\"pixel-corners play-hand-button\" hx-get=\"/hand\" hx-trigger=\"click\" hx-target=\".hand\" hx-swap=\"innerHTML\">Get Hand</button><div class=\"sort-hand-area pixel-corners\"><div class=\"sort-hand-text\">Sort Hand</div><div class=\"sort-hand-rank-button pixel-corners\">Rank</div><div class=\"sort-hand-suit-button pixel-corners\">Suit</div></div><button class=\"pixel-corners discard-hand-button\" hx-get=\"/reset\" hx-trigger=\"click\" hx-target=\".sidebar-container\" hx-swap=\"outerHTML\">Reset Session</button><div class=\"hand-drawn-amount\">0/0</div></div><div class=\"deck\"><img style=\"padding-left: 10px; padding-bottom: 30px; background-color: transparent; background-image: none;\" class=\"card pixel-corners\" src=\"static/card-back.png\"></div></div></body></html>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><div class=\"buttons\"><button class=\"pixel-corners play-hand-button\" hx-get=\"/hand\" hx-trigger=\"click\" hx-target=\".hand\" hx-swap=\"innerHTML\">Draw & Play Hand</button><div class=\"sort-hand-area pixel-corners\"><div class=\"sort-hand-text\">Sort Hand</div><div class=\"sort-hand-rank-button pixel-corners\">Rank</div><div class=\"sort-hand-suit-button pixel-corners\">Suit</div></div><button class=\"pixel-corners discard-hand-button\" hx-get=\"/reset\" hx-trigger=\"click\" hx-target=\".sidebar-container\" hx-swap=\"outerHTML\">Reset</button><div class=\"hand-drawn-amount\">0/0</div></div><div class=\"deck\"><img style=\"padding-left: 10px; padding-bottom: 30px; background-color: transparent; background-image: none;\" class=\"card pixel-corners\" src=\"static/card-back.png\"></div></div></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -214,7 +216,7 @@ func sidebarComponent(handsRemaining int, currentWins int) templ.Component {
 		var templ_7745c5c3_Var11 string
 		templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", requiredWins*1000))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 116, Col: 255}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 117, Col: 255}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 		if templ_7745c5c3_Err != nil {
@@ -227,7 +229,7 @@ func sidebarComponent(handsRemaining int, currentWins int) templ.Component {
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs(message.NewPrinter(language.English).Sprintf("%d", currentWins*1000))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 120, Col: 189}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 121, Col: 189}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -240,7 +242,7 @@ func sidebarComponent(handsRemaining int, currentWins int) templ.Component {
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(strconv.Itoa(handsRemaining))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 133, Col: 74}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `index.templ`, Line: 134, Col: 74}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
