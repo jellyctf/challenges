@@ -10,8 +10,11 @@ app = Flask(__name__)
 # https://github.com/pallets/werkzeug/blob/2bcb43c3574de33b36174c6dc964182ccbc14a69/src/werkzeug/formparser.py#L59
 app.config["MAX_CONTENT_LENGTH"] = 1024 * 500
 
+# not redacted
+JWT_SECRET = "singaQu5aeWoh1vuoJuD]ooJ9aeh2soh"
+
 def is_admin(token):
-    data = jwt.decode(token, "secret", algorithms=["HS256"])
+    data = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
     return data["user"] == "jelly"
 
 @app.route('/static/<path:path>')
@@ -21,7 +24,7 @@ def send_static(path):
 @app.route("/")
 def index():
     resp = make_response(send_file("chat.html"))
-    resp.set_cookie('token', jwt.encode({"user":"starknight"}, "secret", algorithm="HS256"))
+    resp.set_cookie('token', jwt.encode({"user":"starknight"}, JWT_SECRET, algorithm="HS256"))
     return resp
 
 @app.route("/admin")
