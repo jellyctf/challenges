@@ -12,3 +12,4 @@ be accurate to the nearest millisecond, use UTC, and answer in ISO8601 or unix e
 
 
 hint: jelly is gonna be with the **snowflakes** in the atmosphere now
+explicit hint: https://en.wikipedia.org/wiki/Snowflake_ID https://discord.com/developers/docs/reference#snowflakes
