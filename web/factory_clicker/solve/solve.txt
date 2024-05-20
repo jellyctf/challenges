@@ -1,0 +1,5 @@
+Console
+
+fetch("http://127.0.0.1:8080/increment?increment_amount=2020", {
+  "method": "POST",
+});
