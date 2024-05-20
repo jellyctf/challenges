@@ -1,10 +1,2 @@
-Code is store two numbers in rbp-0x8 and rbp-0x4 and add them to eax.
-
-wawaawa = 110 = 6
-wawawa = 111 = 7
-
-6 + 7 = 13
-
-
-
+Code is addding two numbers 0x7 and 0x6
 jellyCTF{assembly13}
