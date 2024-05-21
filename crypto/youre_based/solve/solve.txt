@@ -1,0 +1,7 @@
+base64
+jellyCTF{th1s_i5_just_awawawarmup}
+
+base65535
+
+baseBABA = 47802
+jellyCTF{baba_is_C00L_but_j3lly_i5_COOLER}

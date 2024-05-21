@@ -1,42 +1,42 @@
 # challenges
 
-| name                         | category  | author      | points | complete? |
-| ----                         | ----      | -------     | ---    | ---       | 
-| cult_classic                 | crypto    | Sheepiroo   | ?      | ❌        | 
-| dizzy_fishman                | crypto    | Sheepiroo   | ?      | ❌        | 
-| exclusively_yours            | crypto    | Sheepiroo   | ?      | ❌        | 
-| passcode_lock                | crypto    | Sheepiroo   | ?      | ❌        | 
-| rsain't                      | crypto    | Sheepiroo   | ?      | ❌        | 
-| alien_transmission           | forensics | Sheepiroo   | ?      | ❌        | 
-| head_empty                   | forensics | arepi_nemui | 1000   | ✅        | 
-| head_empty_2                 | forensics | arepi_nemui | 2000   | ✅        | 
-| mpreg                        | forensics | Sheepiroo   | ?      | ❌        | 
-| oshi_mark                    | forensics | 2ndmeow     | ?      | ❌        |
-| the_REAL_truth               | forensics | arepi_nemui | 1500   | ✅        | 
-| the_REAL_truth_2             | forensics | arepi_nemui | 2000   | ✅        | 
-| just_win_lol                 | misc      | arepi_nemui | 2000   | ✅        | 
-| this_is_canon                | misc      | Sheepiroo   | ?      | ❌        | 
-| yapping                      | misc      | kuuhaku0989 | ?      | ❌        | 
-| into_the_atmosphere          | osint     | arepi_nemui | 500    | ✅        | 
-| secret_engineering_role_play | osint     | arepi_nemui | 1000   | ✅        | 
-| stalknights_1                | osint     | Sheepiroo   | ?      | ❌        | 
-| stalknights_2                | osint     | Sheepiroo   | ?      | ❌        | 
-| stalknights_3                | osint     | Sheepiroo   | ?      | ❌        | 
-| stalknights_6                | osint     | Sheepiroo   | ?      | ❌        | 
-| super_fan                    | osint     | arepi_nemui | 2000   | ✅        | 
-| phase_coffee                 | pwn       | Sheepiroo   | ?      | ❌        | 
-| phase_coffee_FINAL           | pwn       | Sheepiroo   | ?      | ❌        | 
-| phase_coffee_FINAL_UPDATED   | pwn       | Sheepiroo   | ?      | ❌        | 
-| lost_in_translation          | rev       | kuuhaku0989 | ?      | ❌        | 
-| rev1                         | rev       | arepi_nemui | 500    | ✅        | 
-| aidoru                       | web       | Sheepiroo   | ?      | ❌        | 
-| awafy_me                     | web       | Sheepiroo   | ?      | ❌        | 
-| awascii_validator            | web       | Sheepiroo   | ?      | ❌        | 
-| bro_visited_his_site         | web       | arepi_nemui | 1000   | ❌        | 
-| bro_visited_his_site_2       | web       | arepi_nemui | 1000   | ❌        | 
-| pentest_on_stream            | web       | arepi_nemui | 2000   | ✅        | 
-| vlookup_hot_singles          | web       | arepi_nemui | 500    | ✅        | 
-| vlookup_hot_singles_2        | web       | arepi_nemui | 2000   | ✅        | 
+| name                         | category  | author      | points | complete? | tested? |
+| ----                         | ----      | -------     | ---    | ---       | ---     |
+| cult_classic                 | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| dizzy_fishman                | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| exclusively_yours            | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| passcode_lock                | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| rsain't                      | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| alien_transmission           | forensics | Sheepiroo   | ?      | ❌        | ❌     |
+| head_empty                   | forensics | arepi_nemui | 1000   | ✅        | ❌     |
+| head_empty_2                 | forensics | arepi_nemui | 2000   | ✅        | ❌     |
+| mpreg                        | forensics | Sheepiroo   | ?      | ❌        | ❌     |
+| oshi_mark                    | forensics | 2ndmeow     | ?      | ❌        | ❌     |
+| the_REAL_truth               | forensics | arepi_nemui | 1500   | ✅        | ❌     |
+| the_REAL_truth_2             | forensics | arepi_nemui | 2000   | ✅        | ❌     |
+| just_win_lol                 | misc      | arepi_nemui | 2000   | ✅        | ❌     |
+| this_is_canon                | misc      | Sheepiroo   | ?      | ❌        | ❌     |
+| yapping                      | misc      | kuuhaku0989 | ?      | ❌        | ❌     |
+| into_the_atmosphere          | osint     | arepi_nemui | 500    | ✅        | ❌     |
+| secret_engineering_role_play | osint     | arepi_nemui | 1000   | ✅        | ❌     |
+| stalknights_1                | osint     | Sheepiroo   | 1000   | ✅        | ❌     |
+| stalknights_2                | osint     | Sheepiroo   | 2000   | ✅        | ❌     |
+| stalknights_3                | osint     | Sheepiroo   | 2000   | ✅        | ❌     |
+| stalknights_6                | osint     | Sheepiroo   | ?      | ❌        | ❌     |
+| super_fan                    | osint     | arepi_nemui | 2000   | ✅        | ❌     |
+| phase_coffee                 | pwn       | Sheepiroo   | ?      | ✅        | ❌     |
+| phase_coffee_FINAL           | pwn       | Sheepiroo   | ?      | ❌        | ❌     |
+| phase_coffee_FINAL_UPDATED   | pwn       | Sheepiroo   | ?      | ❌        | ❌     |
+| lost_in_translation          | rev       | kuuhaku0989 | ?      | ❌        | ❌     |
+| rev1                         | rev       | arepi_nemui | 500    | ✅        | ❌     |
+| aidoru                       | web       | Sheepiroo   | ?      | ❌        | ❌     |
+| awafy_me                     | web       | Sheepiroo   | ?      | ❌        | ❌     |
+| awascii_validator            | web       | Sheepiroo   | ?      | ❌        | ❌     |
+| bro_visited_his_site         | web       | arepi_nemui | 1000   | ❌        | ❌     |
+| bro_visited_his_site_2       | web       | arepi_nemui | 1000   | ❌        | ❌     |
+| pentest_on_stream            | web       | arepi_nemui | 2000   | ✅        | ❌     |
+| vlookup_hot_singles          | web       | arepi_nemui | 500    | ✅        | ❌     |
+| vlookup_hot_singles_2        | web       | arepi_nemui | 2000   | ✅        | ❌     |
 
 
 ## folder structure
