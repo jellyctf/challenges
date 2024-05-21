@@ -1,11 +1,11 @@
-# a
+# head_empty
 
 what's jelly's password?
 
 tool hint: volatilty3
 explicit hint: windows.hashdump.Hashdump
 
-# a2
+# head_empty_2
 
 I was editing this image https://twitter.com/jellyhoshiumi/status/1785919609872474201 - can you see the changes I made?
 
