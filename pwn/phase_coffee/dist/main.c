@@ -28,13 +28,13 @@ int main(int argc, char **argv) {
         }
         else if (menu == 2)
         {
-            printf("\n\nCurrently on sale\n");
+            printf("\nCurrently on sale\n");
             printf("1. Kaneko Lumi Inspired - $35 each (%d in stock)\n", non_jelly_remainder_stock);
             printf("2. Jelly Hoshiumi Inspired (Limited Edition) - $1,000,000 each (1 in stock)\n");
             printf("Please make a selection: ");
-
+	
             int choice;
-            fflush(stdin);
+	    fflush(stdin);
             scanf("%d", &choice);
 
             if (choice == 1)
