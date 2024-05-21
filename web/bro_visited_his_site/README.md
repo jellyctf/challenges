@@ -2,7 +2,7 @@
 
 ## part 1
 
-i stored my secrets in the flask app config
+bro stored his secrets in the flask app config
 
 hint: SSTI
 explicit hint: https://ctftime.org/writeup/10895
