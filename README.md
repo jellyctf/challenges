@@ -1,7 +1,7 @@
 # challenges
 
 | name                         | category  | author      | points | complete? |
-| ----                         | ----      | -------     | ---    | ❌        | 
+| ----                         | ----      | -------     | ---    | ---       | 
 | cult_classic                 | crypto    | Sheepiroo   | ?      | ❌        | 
 | dizzy_fishman                | crypto    | Sheepiroo   | ?      | ❌        | 
 | exclusively_yours            | crypto    | Sheepiroo   | ?      | ❌        | 
