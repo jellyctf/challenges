@@ -22,9 +22,11 @@ if not (1 < g < p):
 
 public_key_A = pow(g, secret_A, p)
 print("Dizzy's public key (integer) : ", public_key_A)
+time.sleep(1)
 
 public_key_B = pow(g, secret_B, p)
 print("Sakana's public key (integer): ", public_key_B)
+time.sleep(1)
 
 print("Dizzy and Sakana are calculating their secret keys...", end='\n')
 secret_dizzy = pow(public_key_B, secret_A, p)
