@@ -1,15 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Surely there won't be any more bugs
 int main(int argc, char **argv) {
-    int BUF_SIZE = 64;
-    char address[BUF_SIZE];
-    int coin_balance = 1000;
+    int coin_balance = 100;
     int con = 0;
 
     while (con == 0){
-        int menu;
-
         printf("\nWelcome to the Phase Connect coffee shop v2.0\n");
         printf("We sell coffee! \n");
         printf("Please buy our coffee... \n");
@@ -22,6 +19,7 @@ int main(int argc, char **argv) {
         printf("Enter a menu selection \n");
         fflush(stdin);
 
+        int menu;
         scanf("%d", &menu);
 
         if(menu == 1)
@@ -31,8 +29,8 @@ int main(int argc, char **argv) {
         else if (menu == 2)
         {
             printf("\n\nCurrently on sale\n");
-            printf("1. Tenma Maemi Inspired - $35 each\n");
-            printf("2. Amanogawa Shiina Inspired - $35 each\n");
+            printf("1. Chisaka Airi Inspired - $35 each\n");
+            printf("2. Rie Himemiya Inspired - $35 each\n");
             printf("3. Jelly Hoshiumi Inspired (Limited Edition) - $1,000,000 each\n");
             printf("Please make a selection: ");
 
@@ -52,39 +50,26 @@ int main(int argc, char **argv) {
                 if (quantity > 0)
                 {
                     int total_cost = 35 * quantity;
+                    int coin_balance_after_purchase = coin_balance - total_cost;
 
-                    if (total_cost < 0)
+                    printf("Current balance: %d\n", coin_balance);
+                    printf("Total cost: %d\n", total_cost);
+                    printf("Balance after purchase: %d\n", coin_balance_after_purchase);
+
+                    if (coin_balance_after_purchase < 0)
                     {
-                        printf("Requested quantity too large!\n");
+                        printf("Insufficient funds to purchase! Please try again!\n\n");
                     }
                     else
                     {
+                        coin_balance = coin_balance_after_purchase;
+                        printf("%d coffees purchased! Your coffee is being packaged and will be delivered in 2028!\n\n", quantity);
                         printf("Current balance: %d\n", coin_balance);
-                        printf("Total cost: %d\n", total_cost);
-
-                        if (coin_balance < total_cost)
-                        {
-
-                            printf("Insufficient funds to purchase! Please try again!\n\n");
-                        }
-                        else
-                        {
-                            int remaining_coin_balance = coin_balance - total_cost;
-
-                            printf("Your order is being processed. Please enter your shipping address: ");
-                            scanf("\n");
-                            gets(address);
-
-                            printf("%d coffees purchased! Your coffee is being packaged and will be delivered in 2028!\n", quantity);
-                            printf("Coffee will be delivered to %s\n", address);
-                            printf("Current balance: %d\n", remaining_coin_balance);
-
-                            coin_balance = remaining_coin_balance;
-                        }
                     }
                 }
                 else
                 {
+                    // Stupid bugs... Fixed negative coffee quantity input validation
                     printf("Invalid coffee quantity\n");
                 }
             }

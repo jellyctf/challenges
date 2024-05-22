@@ -24,9 +24,9 @@
 | stalknights_3                | osint     | Sheepiroo   | 2000   | ✅        | ❌     |
 | stalknights_6                | osint     | Sheepiroo   | ?      | ❌        | ❌     |
 | super_fan                    | osint     | arepi_nemui | 2000   | ✅        | ❌     |
-| phase_coffee                 | pwn       | Sheepiroo   | ?      | ✅        | ❌     |
-| phase_coffee_FINAL           | pwn       | Sheepiroo   | ?      | ❌        | ❌     |
-| phase_coffee_FINAL_UPDATED   | pwn       | Sheepiroo   | ?      | ❌        | ❌     |
+| phase_coffee_1               | pwn       | Sheepiroo   | 500    | ✅        | ❌     |
+| phase_coffee_2               | pwn       | Sheepiroo   | 1000   | ✅        | ❌     |
+| phase_coffee_3               | pwn       | Sheepiroo   | 1000   | ✅        | ❌     |
 | lost_in_translation          | rev       | kuuhaku0989 | ?      | ❌        | ❌     |
 | rev1                         | rev       | arepi_nemui | 500    | ✅        | ❌     |
 | aidoru                       | web       | Sheepiroo   | ?      | ❌        | ❌     |

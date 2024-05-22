@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 
+// Surely there won't be any more bugs
 int main(int argc, char **argv) {
     int coin_balance = 100;
     int con = 0;
@@ -67,6 +69,7 @@ int main(int argc, char **argv) {
                 }
                 else
                 {
+                    // Stupid bugs... Fixed negative coffee quantity input validation
                     printf("Invalid coffee quantity\n");
                 }
             }
