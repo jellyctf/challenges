@@ -7,10 +7,10 @@
 | exclusively_yours            | crypto    | Sheepiroo   | 500    | ✅        | ❌     |
 | passcode_lock                | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
 | rsain't                      | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
-| alien_transmission           | forensics | Sheepiroo   | ?      | ❌        | ❌     |
+| alien_transmission           | forensics | Sheepiroo   | 500    | ✅        | ❌     |
 | head_empty                   | forensics | arepi_nemui | 1000   | ✅        | ❌     |
 | head_empty_2                 | forensics | arepi_nemui | 2000   | ✅        | ❌     |
-| mpreg                        | forensics | Sheepiroo   | ?      | ❌        | ❌     |
+| mpreg                        | forensics | Sheepiroo   | 1000   | ✅        | ❌     |
 | oshi_mark                    | forensics | 2ndmeow     | ?      | ❌        | ❌     |
 | the_REAL_truth               | forensics | arepi_nemui | 1500   | ✅        | ❌     |
 | the_REAL_truth_2             | forensics | arepi_nemui | 2000   | ✅        | ❌     |
