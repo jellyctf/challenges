@@ -1,4 +1,4 @@
 # exclusively_yours
-I made this flag just for you... but I think I forgot the key. Surely you'll figure it out :>
+I made this flag exclusively for you... but I lost the key. Surely you can figure it out :>
 
 Reminder: The flag format is `jellyCTF{...}`

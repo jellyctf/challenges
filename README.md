@@ -3,8 +3,8 @@
 | name                         | category  | author      | points | complete? | tested? |
 | ----                         | ----      | -------     | ---    | ---       | ---     |
 | cult_classic                 | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
-| dizzy_fishman                | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
-| exclusively_yours            | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| dizzy_fishman                | crypto    | Sheepiroo   | 2000   | ✅        | ❌     |
+| exclusively_yours            | crypto    | Sheepiroo   | 500    | ✅        | ❌     |
 | passcode_lock                | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
 | rsain't                      | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
 | alien_transmission           | forensics | Sheepiroo   | ?      | ❌        | ❌     |
@@ -32,8 +32,8 @@
 | aidoru                       | web       | Sheepiroo   | ?      | ❌        | ❌     |
 | awafy_me                     | web       | Sheepiroo   | ?      | ❌        | ❌     |
 | awascii_validator            | web       | Sheepiroo   | ?      | ❌        | ❌     |
-| bro_visited_his_site         | web       | arepi_nemui | 1000   | ❌        | ❌     |
-| bro_visited_his_site_2       | web       | arepi_nemui | 1000   | ❌        | ❌     |
+| bro_visited_his_site         | web       | arepi_nemui | 1000   | ✅        | ❌     |
+| bro_visited_his_site_2       | web       | arepi_nemui | 1000   | ✅        | ❌     |
 | pentest_on_stream            | web       | arepi_nemui | 2000   | ✅        | ❌     |
 | vlookup_hot_singles          | web       | arepi_nemui | 500    | ✅        | ❌     |
 | vlookup_hot_singles_2        | web       | arepi_nemui | 2000   | ✅        | ❌     |
