@@ -14,7 +14,6 @@
 | oshi_mark                    | forensics | 2ndmeow     | ?      | ❌        | ❌     |
 | the_REAL_truth               | forensics | arepi_nemui | 1500   | ✅        | ❌     |
 | the_REAL_truth_2             | forensics | arepi_nemui | 2000   | ✅        | ❌     |
-| awagex_1                     | misc      | lisp_beamer | ?      | ❌        | ❌     |
 | just_win_lol                 | misc      | arepi_nemui | 2000   | ✅        | ❌     |
 | this_is_canon                | misc      | Sheepiroo   | ?      | ❌        | ❌     |
 | yapping                      | misc      | kuuhaku0989 | ?      | ❌        | ❌     |
@@ -28,8 +27,7 @@
 | phase_coffee_1               | pwn       | Sheepiroo   | 500    | ✅        | ❌     |
 | phase_coffee_2               | pwn       | Sheepiroo   | 1000   | ✅        | ❌     |
 | phase_coffee_3               | pwn       | Sheepiroo   | 1000   | ✅        | ❌     |
-| Awassmbely_1                 | rev       | lisp_beamer | ?      | ✅        | ❌     |
-| Awassmbely_2                 | rev       | lisp_beamer | ?      | ❌        | ❌     |
+| Awassmbely_1                 | rev       | lisp_beamer | ?      | ❌        | ❌     |
 | lost_in_translation          | rev       | kuuhaku0989 | ?      | ❌        | ❌     |
 | rev1                         | rev       | arepi_nemui | 500    | ✅        | ❌     |
 | aidoru                       | web       | Sheepiroo   | ?      | ❌        | ❌     |
@@ -37,7 +35,7 @@
 | awascii_validator            | web       | Sheepiroo   | ?      | ❌        | ❌     |
 | bro_visited_his_site         | web       | arepi_nemui | 1000   | ✅        | ❌     |
 | bro_visited_his_site_2       | web       | arepi_nemui | 1000   | ✅        | ❌     |
-| factory_clicker              | web       | lisp_beamer | ?      | ✅        | ❌     |
+| factory_clicker              | web       | lisp_beamer | ?      | ❌        | ❌     |
 | pentest_on_stream            | web       | arepi_nemui | 2000   | ✅        | ❌     |
 | vlookup_hot_singles          | web       | arepi_nemui | 500    | ✅        | ❌     |
 | vlookup_hot_singles_2        | web       | arepi_nemui | 2000   | ✅        | ❌     |
