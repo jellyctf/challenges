@@ -125,7 +125,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	limiterMiddleware, err := httplimit.NewMiddleware(store, httplimit.IPKeyFunc())
+	limiterMiddleware, err := httplimit.NewMiddleware(store, httplimit.IPKeyFunc("CF-Connecting-IP"))
 	if err != nil {
 		log.Fatal(err)
 	}
