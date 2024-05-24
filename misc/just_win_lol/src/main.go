@@ -76,7 +76,6 @@ func main() {
 		var timeNow = time.Now().UTC().Unix()
 		var rand_time = rand.New(rand.NewSource(timeNow))
 		hand := randHand(*rand_time)
-		log.Println(r.Header["X-Real-Ip"], hand)
 
 		handsRemaining := sessionManager.GetInt(r.Context(), "handsRemaining")
 		currentWins := sessionManager.GetInt(r.Context(), "wins")
