@@ -1,6 +1,6 @@
 # challenges
 
-| name                         | category  | author      | points | complete? | tested? |
+| name                         | category  | author      | points | on ctfd?  | tested? |
 | ----                         | ----      | -------     | ---    | ---       | ---     |
 | cult_classic                 | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
 | dizzy_fishman                | crypto    | Sheepiroo   | 2000   | ✅        | ❌     |
@@ -11,7 +11,7 @@
 | head_empty                   | forensics | arepi_nemui | 1000   | ✅        | ❌     |
 | head_empty_2                 | forensics | arepi_nemui | 2000   | ✅        | ❌     |
 | mpreg                        | forensics | Sheepiroo   | 1000   | ✅        | ❌     |
-| oshi_mark                    | forensics | 2ndmeow     | ?      | ❌        | ❌     |
+| oshi_mark                    | forensics | 2ndmeow     | 1500   | ✅        | ❌     |
 | the_REAL_truth               | forensics | arepi_nemui | 1500   | ✅        | ❌     |
 | the_REAL_truth_2             | forensics | arepi_nemui | 2000   | ✅        | ❌     |
 | just_win_lol                 | misc      | arepi_nemui | 2000   | ✅        | ❌     |
@@ -35,7 +35,7 @@
 | awascii_validator            | web       | Sheepiroo   | ?      | ❌        | ❌     |
 | bro_visited_his_site         | web       | arepi_nemui | 1000   | ✅        | ❌     |
 | bro_visited_his_site_2       | web       | arepi_nemui | 1000   | ✅        | ❌     |
-| factory_clicker              | web       | lisp_beamer | ?      | ❌        | ❌     |
+| factory_clicker              | web       | lisp_beamer | 500    | ✅        | ✅     |
 | pentest_on_stream            | web       | arepi_nemui | 2000   | ✅        | ❌     |
 | vlookup_hot_singles          | web       | arepi_nemui | 500    | ✅        | ❌     |
 | vlookup_hot_singles_2        | web       | arepi_nemui | 2000   | ✅        | ❌     |
