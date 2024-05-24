@@ -45,11 +45,10 @@
 
     
    <script>
-        let score = 0;
+        let score = document.getElementById('scoreValue').textContent;
         let clickCount = 0;
         let clickTimeout;
         function handleClick() {
-            
             score++; 
             document.getElementById('scoreValue').textContent = score;
             clickCount++;
