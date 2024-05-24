@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #c7e5f3;
+        }
+        #score {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #clickImage {
+            width: 30%; 
+            animation: rotate 5s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        #message {
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Build Pipes For Jelly!</h1>
+    <p>Jelly needs 500,000,000,000 pipes for her factory! </p>
+    <div id="score">Pipes Made: <span id="scoreValue">{{ score }}</span></div>
+    <img id="clickImage" src="static/itemduct-opaque.png" alt="Click Me!">
+    <p id="message"></p> 
+
+
+    
+   <script>
+        let score = document.getElementById('scoreValue').textContent;
+        let clickCount = 0;
+        let clickTimeout;
+        function handleClick() {
+            score++; 
+            document.getElementById('scoreValue').textContent = score;
+            clickCount++;
+            clearTimeout(clickTimeout); 
+            clickTimeout = setTimeout(sendRequest, 1000); 
+        }
+
+        async function sendRequest() {
+                const response = await fetch(`/increment?increment_amount=${clickCount}`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                score = data.score; 
+                document.getElementById('scoreValue').textContent = score;
+                document.getElementById('message').textContent = data.flag;
+                clickCount = 0; 
+           
+        }
+        document.getElementById('clickImage').addEventListener('click', handleClick);
+    </script>
+</body>
+</html>
