@@ -19,7 +19,7 @@ def increment():
     global flag
     increment_amount = int(request.args.get('increment_amount', 1))
     score += increment_amount
-    if score > 50000: flag = "jellyCTF{keep_on_piping_jelly}"
+    if score > 500000000000: flag = "jellyCTF{keep_on_piping_jelly}"
     return jsonify({'score': score, 'flag': flag})
 
 if __name__ == "__main__":
