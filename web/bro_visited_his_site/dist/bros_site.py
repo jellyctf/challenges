@@ -31,4 +31,4 @@ def send_static(path):
     return send_from_directory('static', path)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8081, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)

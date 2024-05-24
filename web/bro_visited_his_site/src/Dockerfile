@@ -9,5 +9,5 @@ RUN pip install --user pipenv && pipenv install --deploy --ignore-pipfile
 
 COPY --chown=nobody:nobody --chmod=555 . /app/
 
-EXPOSE 8081
+EXPOSE 8080
 CMD ["pipenv", "run", "python", "bros_site.py"]
