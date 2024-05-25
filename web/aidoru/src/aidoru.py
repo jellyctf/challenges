@@ -1,9 +1,19 @@
 from flask import Flask
 from flask import render_template
-from app_secrets import TALENTS, get_uuid
+from app_secrets import get_uuid
 import json
 
 app = Flask(__name__)
+
+# Public visibility true/false
+TALENTS = {
+    "rie": True,
+    "panko": True,
+    "lumi": True,
+    "jelly": False,
+    "uruka": True,
+    "lia": True
+}
 
 def get_profile(name):
     if name not in TALENTS.keys() or not TALENTS[name]:
