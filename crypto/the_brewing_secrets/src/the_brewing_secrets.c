@@ -75,9 +75,9 @@ int main(int argc, char **argv) {
             printf("Flag not found: please run this on the server\n");
             exit(0);
         }
-        char buf[64];
-        fgets(buf, 63, f);
-        printf("Validation successful. Unlocking vault: %s\n", buf);
+        char buf[128];
+        fgets(buf, 127, f);
+        printf("Validation successful. Unlocking garage door: %s\n", buf);
     }
 
     return 0;
