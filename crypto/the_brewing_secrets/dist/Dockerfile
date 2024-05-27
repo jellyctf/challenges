@@ -1,6 +1,6 @@
 FROM gcc AS build
 WORKDIR /app/
-COPY the_brewing_secrets.c Makefile /app/
+COPY the_brewing_secrets.c Makefile flag.txt /app/
 RUN make
 
 FROM debian AS run

@@ -28,7 +28,7 @@ int runChallenge(int passcodeLength)
             return 1;
         }
 
-        if (timeout % passcodeLength == 4)
+        if (timeout % passcodeLength == (passcodeLength - 1))
         {
             printf("Passcode incorrect. Try again!\n");
         }
@@ -44,7 +44,7 @@ int runChallenge(int passcodeLength)
 int main(int argc, char **argv) {
     srand(time(NULL));
 
-    int PASSCODE_LENGTH = 5;
+    int PASSCODE_LENGTH = 6;
     int NUM_PHASES = 10;
 
     int phase_number;
