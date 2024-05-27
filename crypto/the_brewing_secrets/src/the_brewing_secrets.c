@@ -9,7 +9,6 @@ int runChallenge(int passcodeLength)
     int maxTimeout = bitmask;
     int passCode = random() & bitmask;
 
-    printf("Debug random passcode value: %u\n", passCode);
     printf("WARNING: System will timeout after %d entries\n", maxTimeout + EXTRA_ALLOWANCE);
     printf("Enter %d-digit binary passcode  \n", passcodeLength);
 
