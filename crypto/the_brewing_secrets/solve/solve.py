@@ -2,7 +2,7 @@
 
 from pwn import *
 
-p = process("./passcode_lock")
+p = process("./the_brewing_secrets")
 
 n = 5
 g = cyclic_gen("01", n=n)

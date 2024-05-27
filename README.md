@@ -2,11 +2,13 @@
 
 | name                         | category  | author      | points | on ctfd?  | tested? |
 | ----                         | ----      | -------     | ---    | ---       | ---     |
-| cult_classic                 | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| cult_classic (1 + 2)         | crypto    | Sheepiroo   | 500    | ✅        | ❌     |
 | dizzy_fishman                | crypto    | Sheepiroo   | 2000   | ✅        | ❌     |
 | exclusively_yours            | crypto    | Sheepiroo   | 500    | ✅        | ❌     |
-| passcode_lock                | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| the_brewing_secrets          | crypto    | Sheepiroo   | 2000   | ✅        | ❌     |
 | rsain't                      | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
+| you're_based                 | crypto    | Sheepiroo   | 500    | ❌        | ❌     |
+| you're_baba_based            | crypto    | Sheepiroo   | 1000   | ❌        | ❌     |
 | alien_transmission           | forensics | Sheepiroo   | 500    | ✅        | ❌     |
 | head_empty                   | forensics | arepi_nemui | 1000   | ✅        | ❌     |
 | head_empty_2                 | forensics | arepi_nemui | 2000   | ✅        | ❌     |
@@ -30,9 +32,9 @@
 | Awassmbely_1                 | rev       | lisp_beamer | ?      | ❌        | ❌     |
 | lost_in_translation          | rev       | kuuhaku0989 | ?      | ❌        | ❌     |
 | rev1                         | rev       | arepi_nemui | 500    | ✅        | ❌     |
-| aidoru                       | web       | Sheepiroo   | ?      | ❌        | ❌     |
-| awafy_me                     | web       | Sheepiroo   | ?      | ❌        | ❌     |
-| awascii_validator            | web       | Sheepiroo   | ?      | ❌        | ❌     |
+| aidoru                       | web       | Sheepiroo   | 500    | ✅        | ❌     |
+| awafy_me                     | web       | Sheepiroo   | 500    | ✅        | ❌     |
+| awascii_validator            | web       | Sheepiroo   | 750    | ✅        | ❌     |
 | bro_visited_his_site         | web       | arepi_nemui | 1000   | ✅        | ❌     |
 | bro_visited_his_site_2       | web       | arepi_nemui | 1000   | ✅        | ❌     |
 | factory_clicker              | web       | lisp_beamer | 500    | ✅        | ✅     |
@@ -46,7 +48,7 @@
     - challenge name
         - dist - for files given to the user at the start of the challenge (e.g. source with flags redacted, binaries, etc.)
         - solve - solutions in either text format or a script
-        - src - solution source 
+        - src - solution source
 
 
 ## site text

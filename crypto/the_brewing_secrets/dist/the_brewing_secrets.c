@@ -1,4 +1,3 @@
-// de Bruijn brute force challenge
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -22,10 +21,8 @@ int runChallenge(int passcodeLength)
     while (timeout < maxTimeout + EXTRA_ALLOWANCE)
     {
         scanf(" %c", &received);
-        printf("Received: %c\n", received);
-        printf("Received equality: %d\n", received != '0');
-        printf("Debug %u\n", userInput);
 
+        // optimisation with bit shift
         userInput = bitmask & (userInput << 1 | (received != '0'));
         if (userInput == passCode)
         {
@@ -51,29 +48,37 @@ int main(int argc, char **argv) {
     int PASSCODE_LENGTH = 5;
     int NUM_PHASES = 10;
 
-    int phase;
-    int result1 = 0;
+    int phase_number;
+    int result = 0;
 
-    for (phase = 1; phase <= NUM_PHASES; phase++)
+    for (phase_number = 1; phase_number <= NUM_PHASES; phase_number++)
     {
-        printf("\n\nStarting Phase %d...\n", phase);
-        result1 = runChallenge(PASSCODE_LENGTH);
+        printf("\n\nStarting phase_number %d...\n", phase_number);
+        result = runChallenge(PASSCODE_LENGTH);
 
         // flush stdin
         int c;
         while((c = getchar()) != '\n' && c != EOF);
 
-        printf("Phase %d validation result: %d\n", phase, result1);
+        printf("Phase number %d - validation result: %d\n", phase_number, result);
 
-        if (result1 == 0)
+        if (result == 0)
         {
             break;
         }
     }
 
-    if (phase == NUM_PHASES + 1)
+    if (phase_number == NUM_PHASES + 1)
     {
-        printf("Win! Flag is: jellyCTF{redacted}\n");
+        FILE *f = fopen("flag.txt", "r");
+        if(f == NULL){
+
+            printf("Flag not found: please run this on the server\n");
+            exit(0);
+        }
+        char buf[64];
+        fgets(buf, 63, f);
+        printf("Validation successful. Unlocking vault: %s\n", buf);
     }
 
     return 0;
