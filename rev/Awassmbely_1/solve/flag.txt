@@ -1,2 +1,4 @@
-Code is addding two numbers 0x7 and 0x6
-jellyCTF{assembly13}
+Code is addding two numbers 0x7 and 0x6 then multlpying it by 2^4 (16) 
+7 + 6 = 13 
+13 x 16 = 208
+jellyCTF{assembly208}
