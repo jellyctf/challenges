@@ -1,10 +1,12 @@
 # youre_based
 Here's a **basic** encoding challenge to start with:
-VGhhdCB3YXMganVzdCBhIHdhcm0gdXAuIEhlcmUgaXMgdGhlIGFjdHVhbCAweDEwMDAwIGVuY29kZWQgZmxhZzog6amq6o2s56G5562U8JOJu+aZqOmRs+apqeqFn/CThbXpkbTpkaHpmaLmmbPpkaPwlJWh8JSVofCUlaHwk4Gh8JONrfCgjbA=
+VGhhdCB3YXMganVzdCBhIHdhcm0gdXAuIEhlcmUgaXMgdGhlIGFjdHVhbCBmbGFnLCB0aG91Z2ggeW91IG1heSBuZWVkIGEgYmFzZSB0aGF0J3MgJ0EnIGJpdCBsYXJnZXI6CumpquqNrOehueetlPCTibvmmajpkbPmqanqhZ/wk4W16ZG06ZGh6Zmi5pmz6ZGj8JSVofCUlaHwlJWh8JOBofCTja3woI2w
 
-# youre_0xBABA-BASEDDDD
-Maybe a custom base
-
-baba is based and you
+# youre_BABA-BASEDDDD
+nerd is you
+**BABA** is based
 flag is win
-/insert baba here/
+
+Ĺ狣訥׶㱃䔃➙玒齽꾇宛䜖ቸ溇ීї갥尋㽯ꓟ弼ġ
+
+
