@@ -8,5 +8,3 @@ nerd is you
 flag is win
 
 Ĺ狣訥׶㱃䔃➙玒齽꾇宛䜖ቸ溇ීї갥尋㽯ꓟ弼ġ
-
-
