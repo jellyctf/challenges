@@ -1,4 +1,3 @@
-# Thought: Hook something up to a web app that receives text input without validation?
 import subprocess
 
 if __name__ == "__main__":
