@@ -24,10 +24,9 @@
 | secret_engineering_role_play | osint     | arepi_nemui | med    | ✅        | ✅     |
 | stalknights_1                | osint     | Sheepiroo   | easy   | ✅        | ✅     |
 | stalknights_2                | osint     | Sheepiroo   | med    | ✅        | ✅     |
-| stalknights_3                | osint     | Sheepiroo   | hard   | ✅        | ❌     |
-| stalknights_4                | osint     | Sheepiroo   | med    | ✅        | ✅     |
+| stalknights_3                | osint     | Sheepiroo   | med    | ✅        | ❌     |
+| stalknights_4                | osint     | Sheepiroo   | hard   | ✅        | ✅     |
 | stalknights_5                | osint     | Sheepiroo   | med    | ✅        | ✅     |
-| stalknights_6                | osint     | Sheepiroo   | ?      | ❌        | ❌     |
 | super_fan                    | osint     | arepi_nemui | hard   | ✅        | ✅     |
 | phase_coffee_1               | pwn       | Sheepiroo   | easy   | ✅        | ❌     |
 | phase_coffee_2               | pwn       | Sheepiroo   | med    | ✅        | ❌     |
