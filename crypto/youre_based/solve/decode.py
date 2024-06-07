@@ -3,9 +3,12 @@ base = int("0xBABA", 16)
 with open('flag.txt', 'r') as f:
     encoded = f.read()
 
+with open('list_of_safe_unicode_chars.txt', 'r') as f:
+    symbols = f.read()
+
 print(encoded)
 
-numeric = [ord(x) for x in encoded]
+numeric = [symbols.find(x) for x in encoded]
 print(numeric)
 
 resulting_number = 0
