@@ -31,7 +31,7 @@
 | phase_coffee_1               | pwn       | Sheepiroo   | easy   | ✅        | ❌     |
 | phase_coffee_2               | pwn       | Sheepiroo   | med    | ✅        | ❌     |
 | phase_coffee_3               | pwn       | Sheepiroo   | med    | ✅        | ❌     |
-| Awassmbely_1                 | rev       | lisp_beamer | ?      | ❌        | ❌     |
+| awassmbely                   | rev       | lisp_beamer | easy   | ✅        | ❌     |
 | lost_in_translation          | rev       | kuuhaku0989 | ?      | ❌        | ✅     |
 | rev1                         | rev       | arepi_nemui | easy   | ✅        | ❌     |
 | aidoru                       | web       | Sheepiroo   | easy   | ✅        | ✅     |
