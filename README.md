@@ -2,7 +2,7 @@
 
 | name                         | category  | author      | diffic | on ctfd?  | tested? |
 | ----                         | ----      | -------     | ---    | ---       | ---     |
-| cherry                       | crypto    | Meow Mix    | hard   | ❌        | ❌     |
+| cherry                       | crypto    | Meow Mix    | hard   | ✅        | ❌     |
 | cipher_check                 | crypto    | Meow Mix    | easy   | ❌        | ✅     |
 | cult_classic_1               | crypto    | Sheepiroo   | easy   | ✅        | ❌     |
 | cult_classic_2               | crypto    | Sheepiroo   | easy   | ✅        | ❌     |
