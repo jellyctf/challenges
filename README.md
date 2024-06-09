@@ -3,7 +3,7 @@
 | name                         | category  | author      | diffic | on ctfd?  | tested? |
 | ----                         | ----      | -------     | ---    | ---       | ---     |
 | cherry                       | crypto    | Meow Mix    | hard   | ✅        | ❌     |
-| cipher_check                 | crypto    | Meow Mix    | easy   | ❌        | ✅     |
+| cipher_check                 | crypto    | Meow Mix    | easy   | ✅        | ✅     |
 | cult_classic_1               | crypto    | Sheepiroo   | easy   | ✅        | ❌     |
 | cult_classic_2               | crypto    | Sheepiroo   | easy   | ✅        | ❌     |
 | dizzy_fishman                | crypto    | Sheepiroo   | hard   | ✅        | ❌     |
@@ -19,7 +19,7 @@
 | oshi_mark                    | forensics | Meow Mix    | med    | ✅        | ✅     |
 | the_REAL_truth               | forensics | arepi_nemui | med    | ✅        | ✅     |
 | the_REAL_truth_2             | forensics | arepi_nemui | hard   | ✅        | ✅     |
-| is_jelly_stuck               | misc      | Meow Mix    | med    | ❌        | ✅     |
+| is_jelly_stuck               | misc      | Meow Mix    | easy   | ✅        | ✅     |
 | just_win_lol                 | misc      | arepi_nemui | hard   | ✅        | ✅     |
 | this_is_canon                | misc      | Sheepiroo   | ?      | ❌        | ❌     |
 | yapping                      | misc      | kuuhaku0989 | ?      | ❌        | ❌     |
