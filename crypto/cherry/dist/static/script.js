@@ -97,7 +97,6 @@ function doSpinAnimation() {
     symbols.style.top = '0';
     symbols.replaceChildren();
     for (let i = slotIndices[columnIndex]; i <= slotIndices[columnIndex] + slotSpins[columnIndex]; i++) {
-      // if (i == slotIndices[columnIndex] || i == slotIndices[columnIndex] + slotSpins[columnIndex] || i % Math.ceil(slotSpins[columnIndex] / 300) == 0)
       symbols.appendChild(createSymbolElement(slotSymbols[i % m]))
     }
     symbols.offsetHeight;
