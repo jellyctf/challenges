@@ -2,21 +2,24 @@
 
 | name                         | category  | author      | diffic | on ctfd?  | tested? |
 | ----                         | ----      | -------     | ---    | ---       | ---     |
+| cherry                       | crypto    | Meow Mix    | hard   | ❌        | ❌     |
+| cipher_check                 | crypto    | Meow Mix    | easy   | ❌        | ✅     |
 | cult_classic_1               | crypto    | Sheepiroo   | easy   | ✅        | ❌     |
 | cult_classic_2               | crypto    | Sheepiroo   | easy   | ✅        | ❌     |
 | dizzy_fishman                | crypto    | Sheepiroo   | hard   | ✅        | ❌     |
-| exclusively_yours            | crypto    | Sheepiroo   | med    | ✅        | ❌     |
+| exclusively_yours            | crypto    | Sheepiroo   | med    | ✅        | ✅     |
 | the_brewing_secrets          | crypto    | Sheepiroo   | hard   | ✅        | ❌     |
 | rsain't                      | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
 | you're_based                 | crypto    | Sheepiroo   | easy   | ✅        | ❌     |
 | you're_baba_based            | crypto    | Sheepiroo   | med    | ✅        | ❌     |
-| alien_transmission           | forensics | Sheepiroo   | easy   | ✅        | ❌     |
+| alien_transmission           | forensics | Sheepiroo   | easy   | ✅        | ✅     |
 | head_empty                   | forensics | arepi_nemui | med    | ✅        | ✅     |
 | head_empty_2                 | forensics | arepi_nemui | hard   | ✅        | ✅     |
 | mpreg                        | forensics | Sheepiroo   | med    | ✅        | ✅     |
-| oshi_mark                    | forensics | 2ndmeow     | med    | ✅        | ❌     |
+| oshi_mark                    | forensics | Meow Mix    | med    | ✅        | ✅     |
 | the_REAL_truth               | forensics | arepi_nemui | med    | ✅        | ✅     |
 | the_REAL_truth_2             | forensics | arepi_nemui | hard   | ✅        | ✅     |
+| is_jelly_stuck               | misc      | Meow Mix    | med    | ❌        | ✅     |
 | just_win_lol                 | misc      | arepi_nemui | hard   | ✅        | ✅     |
 | this_is_canon                | misc      | Sheepiroo   | ?      | ❌        | ❌     |
 | yapping                      | misc      | kuuhaku0989 | ?      | ❌        | ❌     |
@@ -24,7 +27,7 @@
 | secret_engineering_role_play | osint     | arepi_nemui | med    | ✅        | ✅     |
 | stalknights_1                | osint     | Sheepiroo   | easy   | ✅        | ✅     |
 | stalknights_2                | osint     | Sheepiroo   | med    | ✅        | ✅     |
-| stalknights_3                | osint     | Sheepiroo   | med    | ✅        | ❌     |
+| stalknights_3                | osint     | Sheepiroo   | med    | ✅        | ✅     |
 | stalknights_4                | osint     | Sheepiroo   | hard   | ✅        | ✅     |
 | stalknights_5                | osint     | Sheepiroo   | med    | ✅        | ✅     |
 | super_fan                    | osint     | arepi_nemui | hard   | ✅        | ✅     |

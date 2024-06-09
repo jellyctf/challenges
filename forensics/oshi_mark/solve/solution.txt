@@ -1,22 +1,15 @@
 Let's see what happens when we paste the oshi mark on Twitter and... oh.
 https://files.catbox.moe/qhgv2f.png
-We've exceeded the character limit by 3,720!
+We've exceeded the character limit! But how?
 
 We don't need to paste the oshi mark on Twitter either. 
 Opening the file in a text editor like Notepad, Notepad++, Sublime Text, Vi, or Nano reveals weird artifacts too.
 
-There are two ways to see what's going on this:
+To see what's going on, go to a Unicode text analyzer (https://www.fontspace.com/unicode/analyzer) and paste the oshi mark.
+Notice that the text is comprised of ZERO WIDTH NON-JOINER and VARIATION SELECTOR-[1-128].
 
-1. Go to a Unicode text analyzer (https://www.fontspace.com/unicode/analyzer) and paste the oshi mark.
-Notice that the text is comprised of ZERO WIDTH NON-JOINER (U+200C) and VARIATION SELECTOR-[1-16] (U+FE0[0-F]).
+Make a list of the VARIATION SELECTOR numbers and notice that they're numbered from 1-128. 
+[119, 101, 108, 108, 44, 32, 119, ...]
 
-2. Open the text file in a hex editor.
-Notice that the text repeats the pattern "E2 80 8C EF B8 8X" where X can be 0 to F.
-
-Regardless, next we can ask ChatGPT to write a Python script to extract every 12th hexadecimal character, excluding the emojis at the beginning and end (see solve.py)
-
-We get the following the following hexadecimal string:
-"77656c6c2c2077656c6c2c2077656c6c2c206c6f6f6b2077686f2066696e616c6c79206465636f646564206d7920736563726574206f736869206d61726b206d6573736167652120636f6e67726174756c6174696f6e73206f6e2077617374696e6720636f756e746c65737320686f7572732028616e642070726f6261626c7920627261696e2063656c6c7329206669677572696e67206f7574207468617420226177617761776122206d65616e73202269206c6f766520796f752122206d6179626520796f752776652066696e616c6c7920666f756e6420612075736520666f7220616c6c2074686174206e65726479206b6e6f776c6564676520796f7527766520616363756d756c61746564206f766572207468652079656172732e20616e64206c6574277320626520686f6e6573742c20796f7520636f756c646e2774206576656e20666967757265206f757420746865206d65737361676520776974686f75742072656c79696e67206f6e206120736563726574206465636f6465722072696e6720796f752070726f6261626c7920676f742061732061207072697a6520696e2061206b696473272063657265616c20626f782e20646f6e277420776f7272792074686f7567682c206920776f6e27742074656c6c20616e796f6e652120686f772061626f757420746869733f206c65742773206769766520796f752061207072697a6520666f7220796f7572206566666f7274732e20686f772061626f75742e2e2e206a656c6c794354467b615f637574335f616c6963335f6875676734626c335f706c75736831337d212061776177617761776177617761776177617761776177617761776177617761776177617761776177617761212069742773206375746520686f77206e6572647920796f75206172652e"
-
-Which decodes to the following message:
-"well, well, well, look who finally decoded my secret oshi mark message! congratulations on wasting countless hours (and probably brain cells) figuring out that "awawawa" means "i love you!" maybe you've finally found a use for all that nerdy knowledge you've accumulated over the years. and let's be honest, you couldn't even figure out the message without relying on a secret decoder ring you probably got as a prize in a kids' cereal box. don't worry though, i won't tell anyone! how about this? let's give you a prize for your efforts. how about... jellyCTF{a_cut3_alic3_hugg4bl3_plush13}! awawawawawawawawawawawawawawawawawawawawawa! it's cute how nerdy you are."
+These correspond pretty nicely to ASCII codes. In fact, decoding them yields the following message:
+"well, well, well, look who finally decoded my secret oshi mark message! congratulations on wasting countless hours (and probably brain cells) figuring out that "awawawa" means "i love you!" maybe you've finally found a use for all that nerdy knowledge you've accumulated over the years. and let's be honest, you probably couldn't even figure out the message without relying on a silly unicode decoding site you found using hints. don't worry though, i won't tell anyone! how about this? let's give you a prize for your efforts. how about... jellyCTF{a_cut3_alic3_hugg4bl3_plush13}! awawawawawawawa! it's cute how nerdy you are."
