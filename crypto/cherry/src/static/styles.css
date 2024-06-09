@@ -1,0 +1,112 @@
+/* big credit for the design: https://codepen.io/1isten/pen/wvMdNPp */
+
+body {
+    background: #212121;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.slotcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.slot {
+    width: 150px;
+    height: 225px;
+    border: 5px solid white;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    background: #fafafa;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.4) inset;
+}
+
+.slot .symbols {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: top 1.8s;
+}
+
+.slot .symbol {
+    width: 150px;
+    height: 150px;
+    font-size: 90px;
+    line-height: 150px;
+    display: block;
+    text-align: center;
+    padding-top: 38px;
+}
+
+.displaycontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.display {
+    width: 80px;
+    height: 40px;
+    border: 5px solid white;
+    border-radius: 10px;
+    margin-left: 6px;
+    margin-right: 6px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    background: #770000;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.4) inset;
+    font-size: 36px;
+    text-align: center;
+    color: #FF0000;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    margin: 0 0;
+    padding: 5px 5px;
+    font-size: 14px;
+    font-family: 'Verdana', 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    background: #eeeeee;
+    border: 0px solid white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px #AAA;
+}
+
+.button:active {
+    box-shadow: 0 2px #AAA;
+    transform: translateY(4px);
+}
+
+.text {
+    color:white;
+    font-family: 'Verdana', 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+}

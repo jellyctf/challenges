@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Thank you to https://codepen.io/jcjms/pen/JjmajpW for the base template! -->
+<html>
+
+<head>
+  <title>Slot Machine</title>
+  <link rel="stylesheet" href="static/styles.css"/>
+</head>
+
+<body>
+  <div class="container">
+    
+    <p class="text" style="font-size: 18px; margin-bottom:-30px">WINNERS</p>
+    <div class="displaycontainer" style="margin-bottom:0px">
+      <p class="text" style="font-size: 32px; margin-right:20px">🍒🍒🍒</p>
+      <p class="text" style="font-size: 12px;">1-in-35,184,372,088,832</p>
+    </div>
+
+    <div class="slotcontainer">
+      <div class="slot">
+        <div class="symbols" id="slot1Symbols"></div>
+      </div>
+
+      <div class="slot">
+        <div class="symbols" id="slot2Symbols"></div>
+      </div>
+
+      <div class="slot">
+        <div class="symbols" id="slot3Symbols"></div>
+      </div>
+    </div>
+
+    <div class="displaycontainer" style="margin-bottom:-15px">
+        <div class="display"><span id="spinCount0">aaa</span></div>
+        <div class="display"><span id="spinCount1">aaa</span></div>
+        <div class="display" style="margin-right:150px;"><span id="spinCount2">aaa</span></div>
+        <div class="display" style="width:30px;"><span id="spinMode">0</span></div>
+    </div>
+
+    <div class="displaycontainer" style="margin-bottom:10px">
+      <p class="text" style="margin-left:101px; margin-right:246px;">PLAINTEXT</p>
+      <p class="text">MODE</p>
+    </div>
+
+    <div class="buttoncontainer">
+      <button class="button" onclick="change()" style="width: 90px; height: 90px; margin-right:20px;">CHANGE</button>
+      <button class="button" onclick="reset()" style="width: 90px; height: 90px; margin-right:80px;">RESET</button>
+      <button class="button" onclick="spin();" style="width: 150px; height: 150px; font-size:40px; margin-right:80px;">SPIN</button>
+      <button class="button" onclick="playCoin(0);" style="width: 60px; height: 90px; font-size:13px; margin-right:10px;">PLAY 0 COIN</button>
+      <button class="button" onclick="playCoin(1);" style="width: 60px; height: 90px; font-size:13px; margin-right:10px;">PLAY 1 COIN</button>
+      <button class="button" onclick="playCoin(2);" style="width: 60px; height: 90px; font-size:13px; margin-right:10px;">PLAY 2 COIN</button>
+
+    </div>
+  </div>
+
+</body>
+
+<script src="static/script.js"></script>
+
+</html>
