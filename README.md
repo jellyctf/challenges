@@ -10,7 +10,7 @@
 | exclusively_yours            | crypto    | Sheepiroo   | med    | ✅        | ✅     |
 | the_brewing_secrets          | crypto    | Sheepiroo   | hard   | ✅        | ❌     |
 | rsain't                      | crypto    | Sheepiroo   | ?      | ❌        | ❌     |
-| you're_based                 | crypto    | Sheepiroo   | easy   | ✅        | ❌     |
+| you're_based                 | crypto    | Sheepiroo   | easy   | ✅        | ✅     |
 | you're_baba_based            | crypto    | Sheepiroo   | med    | ✅        | ❌     |
 | alien_transmission           | forensics | Sheepiroo   | easy   | ✅        | ✅     |
 | head_empty                   | forensics | arepi_nemui | med    | ✅        | ✅     |
