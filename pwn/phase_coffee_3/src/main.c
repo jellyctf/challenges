@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
     while (con == 0){
         int menu;
 
-        printf("\nWelcome to the Phase Connect coffee shop v2.0\n");
+        printf("\nWelcome to the Phase Connect coffee shop v3.0\n");
         printf("We sell coffee! \n");
         printf("Please buy our coffee... \n");
         printf("or else... \n");
