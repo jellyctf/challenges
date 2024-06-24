@@ -1,0 +1,5 @@
+I was asked to create a fun puzzle that didn't require any technical background... this was it.
+
+After solving the crossword (see `crossword.png`), we need to find the game the level code corresponds to. Our biggest clue is that the last name of the game developer is "tei_ari". Using a little Google-fu, searching "`tei*ari game developer`" brings up Arvi "Hempuli" Teikari. After a little stalking, we can find his itch.io page and discover his only game with "beta" in the name: `https://hempuli.itch.io/baba-is-you-level-editor-beta`. It's Baba Is You! In fact, it's Jelly's favorite game according to her debut slides!
+
+Putting in the level code brings up a deceptively simple Baba level. Solving the level (see `baba.gif`) doesn't give us the flag. Notice that the layout of the level matches the layout of the crossword nicely. In fact, you can overlay them on top of each other. After doing this, tracing the path of the solution gives us `jellyctf{krodflakarkt_k__aliases_c_led_ls}`. Flag Is Win!

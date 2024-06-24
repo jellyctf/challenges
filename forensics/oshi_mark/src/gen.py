@@ -155,3 +155,5 @@ final_hex += utf8_to_hex("🎀")
 filename = "../README.md"
 result = write_to_file(filename, hex_to_utf8(final_hex))
 print(result)
+
+jellyCTF{you_won_cherries!}

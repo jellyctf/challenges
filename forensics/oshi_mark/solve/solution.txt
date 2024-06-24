@@ -1,14 +1,11 @@
-Let's see what happens when we paste the oshi mark on Twitter and... oh.
-https://files.catbox.moe/qhgv2f.png
-We've exceeded the character limit! But how?
+It's just two characters, how hard can it be?
 
-We don't need to paste the oshi mark on Twitter either. 
-Opening the file in a text editor like Notepad, Notepad++, Sublime Text, Vi, or Nano reveals weird artifacts too.
+Copy-pasting the oshi mark into a search engine reveals an unusually long URL. Paste the oshi mark into a text editor like Notepad, Notepad++, Sublime Text, Vi, or Nano and we see some weird artifacts.
 
-To see what's going on, go to a Unicode text analyzer (https://www.fontspace.com/unicode/analyzer) and paste the oshi mark.
+To see what's going on, go to a Unicode text analyzer (https://www.fontspace.com/unicode/analyzer) and paste the oshi mark. 
 Notice that the text is comprised of ZERO WIDTH NON-JOINER and VARIATION SELECTOR-[1-128].
 
-Make a list of the VARIATION SELECTOR numbers and notice that they're numbered from 1-128. 
+Notice that the VARIATION SELECTOR characters are numbered from 1-128. Let's make a list of the numbers.
 [119, 101, 108, 108, 44, 32, 119, ...]
 
 These correspond pretty nicely to ASCII codes. In fact, decoding them yields the following message:

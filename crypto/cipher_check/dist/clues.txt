@@ -1,0 +1,35 @@
+Across
+a8	ARNFSOWLEL
+a7	awa awa awa awa awa awa awa awawawa awawa awa awa awawa awawa awa awa awa awa awa awawa awa awa awawa awawawa awa awawa awa awa awa awawa awawawa awa awawa awawa awa awawawa awawawawa awa awa awa awawa
+a6	65 78 83 87 69 82 81 67 73 78
+a5	41 4e 53 57 45 52 49 4c 4f 4e
+a4	cipher-flags.png
+a3	cipher-symbols.png
+a2	AENNWROMSW
+a1	cipher-pattern.png
+e8	ZMHDVILDNL
+e7	QFLVTKXTSB
+e6	.- -. ... .-- . .-. -.. . - .-
+e5	1000001 1001110 1010011 1010111 1000101 1010010 1010011 1010000 1000101 1000011
+e4	NAFJREVARH
+e3	AJSSENNPHA
+e2	BNTWFRBTFI
+e1	p}$(t#'t$P
+
+Down
+a8	UVU1VFYwVlNSa2xSU1E9PQ==
+b8	IFHFGV2FKJHVGQ2M
+c8	QU5TV0VSTFRJTw==
+d8	101 116 123 127 105 122 114 104 116 116
+e8	AAAAA ABBAB BAABA BABBA AABAA BAAAB ABBBA BABAA AAABB BAABA
+f8	⠁⠝⠎⠺⠑⠗⠺⠑⠑⠏
+g8	1 14 19 23 5 18 13 12 20 5
+h8	CAXOREWSNA
+a4	✌︎☠︎💧︎🕈︎☜︎☼︎✋︎🏱︎🕈︎☠︎
+b4	0 26 10 1 5 36 0 5 9 48
+c4	&#65;&#78;&#83;&#87;&#69;&#82;&#76;&#86;&#78;&#77;
+d4	cipher-boxes.png
+e4	BOTXFSJOBW
+f4	JRDHCYBLAM
+g4	2 66 7777 9 33 777 33 44 33 7777
+h4	414e5357455255454921
