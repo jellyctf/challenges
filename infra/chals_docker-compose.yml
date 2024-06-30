@@ -1,0 +1,26 @@
+services:
+  dizzy_fishman:
+    build: ../crypto/dizzy_fishman/src/
+    restart: always
+    ports:
+      - 4000:4000
+  phase_coffee_1:
+    build: ../pwn/phase_coffee/src/
+    restart: always
+    ports:
+      - 5000:5000
+  phase_coffee_2:
+    build: ../pwn/phase_coffee_2/src/
+    restart: always
+    ports:
+      - 5001:5001
+  phase_coffee_3:
+    build: ../pwn/phase_coffee_3/src/
+    restart: always
+    ports:
+      - 5002:5002
+  the_brewing_secrets:
+    build: ../crypto/the_brewing_secrets/src/
+    restart: always
+    ports:
+      - 6000:6000
