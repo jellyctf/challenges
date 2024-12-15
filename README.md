@@ -3,7 +3,7 @@
 Info
 ----
 
-Welcome to jellyCTF! This is a beginner to intermediate targeted [jeopardy](https://ctftime.org/ctf-wtf/) style [CTF](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)) themed around the Virtual YouTuber [Jelly Hoshiumi](https://www.youtube.com/@JellyHoshiumi), intended to introduce her awatistic awesome audience to security challenges.  
+Welcome to jellyCTF! This is a beginner to intermediate targeted [jeopardy](https://ctftime.org/ctf-wtf/) style [CTF](https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)) themed around the Virtual YouTuber [Jelly Hoshiumi](https://www.youtube.com/@JellyHoshiumi), intended to introduce her ~awatistic~ awesome audience to security challenges.  
 
 *   Challenges are split up into categories and dynamically scored based on how many solves they have, lowering in value the more people solve them, starting at 1000 points and going down to 100 after 200 solves.
 *   The flag format is standard ASCII characters wrapped in `jellyCTF{}`, unless specified otherwise in the challenge description.
@@ -11,7 +11,7 @@ Welcome to jellyCTF! This is a beginner to intermediate targeted [jeopardy](http
     1.  Searching the internet for similar problems that may have CTF writeups in order to get an idea of how to solve problems.
     2.  For challenges with source, try grepping for `jellyCTF{` to see where you want to get to tracing the code path backwards.
     3.  Making use of the hints system for challenges that have them.
-*   The event will run from {{ ctf\_start }} to {{ ctf\_end }}, after which the scoreboard will close and challenge source code and solutions will be released. The site and challenges will stay up until 2024-06-30T23:00:00Z (in ). Feel free to post your own writeups after the event has ended, too.
+*   The event will run from {{ ctf\_start }} to {{ ctf\_end }}, after which the scoreboard will close and challenge source code and solutions will be released. The site and challenges will stay up until 2024-06-30T23:00:00Z. Feel free to post your own writeups after the event has ended, too.
   
 
 Rules
